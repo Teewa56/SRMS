@@ -1,0 +1,92 @@
+{
+  "School of Computing": {
+    "Computer Science": {
+      "100 Level": {
+        "First Semester": ["CSC 101", "CSC 103", "CSC 105", "CSC 107", "MTS 101", "MTS 103", "PHY 101", "GNS 101"],
+        "Second Semester": ["EEC 105", "CSC 102", "CSC 104", "CSC 106", "MTS 102", "MTS 104", "PHY 102", "GNS 102"]
+      },
+      "200 Level": {
+        "First Semester": ["CSC 201", "CSC 203", "CSC 205", "CSC 207", "CSC 209", "MTS 201", "MTS 203", "STA 205"],
+        "Second Semester": ["CSC 202", "CSC 204", "CSC 206", "CSC 208", "CSC 210", "MTS 202", "MTS 204", "STA 206"]
+      },
+      "300 Level": {
+        "First Semester": ["CSC 301", "CSC 303", "CSC 305", "CSC 307", "CSC 309", "CSC 311", "CSC 313", "GNS 301"],
+        "Second Semester": ["CSC 302", "CSC 304", "CSC 306", "CSC 308", "CSC 310", "CSC 312", "CSC 314", "GNS 302"]
+      },
+      "400 Level": {
+        "First Semester": ["CSC 401", "CSC 403", "CSC 405", "CSC 407", "CSC 409", "CSC 411", "CSC 413", "ENT 401"],
+        "Second Semester": ["CSC 402", "CSC 404", "CSC 406", "CSC 408", "CSC 410", "CSC 412", "CSC 414", "ENT 402"]
+      },
+      "500 Level": {
+        "First Semester": ["CSC 501", "CSC 503", "CSC 505", "CSC 507", "CSC 509", "CSC 511", "CSC 513", "CSC 515"],
+        "Second Semester": ["CSC 502", "CSC 504", "CSC 506", "CSC 508", "CSC 599", "CSC 591", "CSC 593", "CSC 595"]
+      }
+    },
+    "Cyber Security": {
+      "100 Level": {
+        "First Semester": ["CYB 101", "CYB 103", "CYB 105", "CYB 107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
+        "Second Semester": ["CYB 102", "CYB 104", "CYB 106", "CYB 108", "MTS 102", "MTS 104", "GNS 102", "EEC 107"]
+      },
+      "200 Level": {
+        "First Semester": ["CYB 201", "CYB 203", "CYB 205", "CYB 207", "CYB 209", "CYB 211", "STA 205", "MTS 201"],
+        "Second Semester": ["CYB 202", "CYB 204", "CYB 206", "CYB 208", "CYB 210", "CYB 212", "STA 206", "MTS 202"]
+      },
+      "300 Level": {
+        "First Semester": ["CYB 301", "CYB 303", "CYB 305", "CYB 307", "CYB 309", "CYB 311", "CYB 313", "GNS 301"],
+        "Second Semester": ["CYB 302", "CYB 304", "CYB 306", "CYB 308", "CYB 310", "CYB 312", "CYB 314", "GNS 302"]
+      },
+      "400 Level": {
+        "First Semester": ["CYB 401", "CYB 403", "CYB 405", "CYB 407", "CYB 409", "CYB 411", "CYB 413", "ENT 401"],
+        "Second Semester": ["CYB 402", "CYB 404", "CYB 406", "CYB 408", "CYB 410", "CYB 412", "CYB 414", "ENT 402"]
+      },
+      "500 Level": {
+        "First Semester": ["CYB 501", "CYB 503", "CYB 505", "CYB 507", "CYB 509", "CYB 511", "CYB 513", "CYB 515"],
+        "Second Semester": ["CYB 502", "CYB 504", "CYB 506", "CYB 508", "CYB 599", "CYB 591", "CYB 593", "CYB 595"]
+      }
+    },
+    "Information Technology": {
+      "100 Level": {
+        "First Semester": ["IFT 101", "IFT 103", "IFT 105", "IFT 107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
+        "Second Semester": ["IFT 102", "IFT 104", "IFT 106", "IFT 108", "MTS 102", "MTS 104", "GNS 102", "PHY 101"]
+      },
+      "200 Level": {
+        "First Semester": ["IFT 201", "IFT 203", "IFT 205", "IFT 207", "IFT 209", "IFT 211", "STA 205", "MTS 201"],
+        "Second Semester": ["IFT 202", "IFT 204", "IFT 206", "IFT 208", "IFT 210", "IFT 212", "STA 206", "MTS 202"]
+      },
+      "300 Level": {
+        "First Semester": ["IFT 301", "IFT 303", "IFT 305", "IFT 307", "IFT 309", "IFT 311", "IFT 313", "GNS 301"],
+        "Second Semester": ["IFT 302", "IFT 304", "IFT 306", "IFT 308", "IFT 310", "IFT 312", "IFT 314", "GNS 302"]
+      },
+      "400 Level": {
+        "First Semester": ["IFT 401", "IFT 403", "IFT 405", "IFT 407", "IFT 409", "IFT 411", "IFT 413", "ENT 401"],
+        "Second Semester": ["IFT 402", "IFT 404", "IFT 406", "IFT 408", "IFT 410", "IFT 412", "IFT 414", "ENT 402"]
+      },
+      "500 Level": {
+        "First Semester": ["IFT 501", "IFT 503", "IFT 505", "IFT 507", "IFT 509", "IFT 511", "IFT 513", "IFT 515"],
+        "Second Semester": ["IFT 502", "IFT 504", "IFT 506", "IFT 508", "IFT 599", "IFT 591", "IFT 593", "IFT 595"]
+      }
+    },
+    "Software Engineering": {
+      "100 Level": {
+        "First Semester": ["SEN 101", "SEN 103", "SEN 105", "SEN 107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
+        "Second Semester": ["SEN 102", "SEN 104", "SEN 106", "SEN 108", "MTS 102", "MTS 104", "GNS 102", "PHY 101"]
+      },
+      "200 Level": {
+        "First Semester": ["SEN 201", "SEN 203", "SEN 205", "SEN 207", "SEN 209", "SEN 211", "STA 205", "MTS 201"],
+        "Second Semester": ["SEN 202", "SEN 204", "SEN 206", "SEN 208", "SEN 210", "SEN 212", "STA 206", "MTS 202"]
+      },
+      "300 Level": {
+        "First Semester": ["SEN 301", "SEN 303", "SEN 305", "SEN 307", "SEN 309", "SEN 311", "SEN 313", "GNS 301"],
+        "Second Semester": ["SEN 302", "SEN 304", "SEN 306", "SEN 308", "SEN 310", "SEN 312", "SEN 314", "GNS 302"]
+      },
+      "400 Level": {
+        "First Semester": ["SEN 401", "SEN 403", "SEN 405", "SEN 407", "SEN 409", "SEN 411", "SEN 413", "ENT 401"],
+        "Second Semester": ["SEN 402", "SEN 404", "SEN 406", "SEN 408", "SEN 410", "SEN 412", "SEN 414", "ENT 402"]
+      },
+      "500 Level": {
+        "First Semester": ["SEN 501", "SEN 503", "SEN 505", "SEN 507", "SEN 509", "SEN 511", "SEN 513", "SEN 515"],
+        "Second Semester": ["SEN 502", "SEN 504", "SEN 506", "SEN 508", "SEN 599", "SEN 591", "SEN 593", "SEN 595"]
+      }
+    }
+  }
+}
