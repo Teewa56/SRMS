@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-// const liveUrl = import.meta.env.VITE_DEPLOYED_BACKEND_URL
-const localUrl = import.meta.env.VITE_BACKEND_LOCAL_URL;
+const liveUrl = import.meta.env.VITE_DEPLOYED_BACKEND_URL
+//const localUrl = import.meta.env.VITE_BACKEND_LOCAL_URL;
 
-const baseUrl = `${localUrl}/lecturer`;
+const baseUrl = `${liveUrl}/lecturer`;
 
 const lecturerApi = axios.create({
     baseURL: baseUrl,
