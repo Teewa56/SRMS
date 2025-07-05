@@ -1,26 +1,5 @@
 {
-    "version": 2,
     "rewrites": [
-        { 
-        "source": "/(.*)", 
-        "destination": "/index.html" 
-        }
-    ],
-    "builds": [
-        {
-        "src": "**/*.html",
-        "use": "@vercel/static"
-        },
-        {
-        "src": "**/*.js",
-        "use": "@vercel/node"
-        }
-    ],
-    "scripts": {
-        "preinstall": "npm cache clean --force",
-        "install": "npm install --legacy-peer-deps --prefer-offline"
-    },
-    "env": {
-        "NODE_ENV": "production"
-    }
+        { "source": "/(.*)", "destination": "/index.html" }
+    ]
 }
