@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom'
 export default function NotFoundError(){
     const navigate = useNavigate();
     return(
-        <div className="h-screen flex items-center justify-center bg-blue-400 text-blue-800 ">
+        <div className="h-screen flex items-center justify-center bg-purple-400 text-blue-800 ">
             <div className="max-w-md p-4 flex flex-col items-center justify-center">
                 <img src="/images/notFound.svg" alt="404 error"
                     className='w-32 h-32 mb-4' />

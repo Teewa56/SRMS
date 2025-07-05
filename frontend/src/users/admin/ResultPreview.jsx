@@ -46,18 +46,15 @@ export default function PreviewResult() {
             setResults([]);
             const res = await previewResult({
                 data: {
-                level: resultData.level,
-                department: resultData.department,
-                semester: resultData.semester
+                    level: resultData.level,
+                    department: resultData.department,
+                    semester: resultData.semester
                 }
             });
             const fetchedResults = res.data.results || [];
             setResults(fetchedResults);
             const courseList = getCourses(resultData.department, resultData.level, resultData.semester);
             setCourses(courseList);
-            if (fetchedResults.length === 0) {
-                setError("No results found.");
-            }
         } catch (err) {
             handleApiError(err, setError, "An unexpected error occurred");
             setResults([]);
@@ -68,12 +65,12 @@ export default function PreviewResult() {
 
     return (
         <div className="h-screen p-2 bg-purple-400 ">
-            <div className='shadow-md p-2 mx-auto max-w-md'>
+            <div className='shadow-md p-2 mx-auto max-w-2xl'>
             <h3 className='font-bold text-2xl'>Preview Result</h3>
             <div className="py-2">
                 <label><p>Semester</p></label>
                 <select
-                    className='border-2 rounded-2xl bg-blue-200 p-2'
+                    className='border-2 rounded-2xl bg-purple-200 p-2'
                     value={resultData.semester}
                     onChange={e => setResultData(prev => ({ ...prev, semester: e.target.value }))}
                 >
@@ -84,7 +81,7 @@ export default function PreviewResult() {
             <div className="py-2">
                 <label><p>Department</p></label>
                 <select
-                className='border-2 rounded-2xl bg-blue-200 p-2'
+                className='border-2 rounded-2xl bg-purple-200 p-2'
                 value={resultData.department}
                 onChange={e => setResultData(prev => ({ ...prev, department: e.target.value }))}
                 >
@@ -95,7 +92,7 @@ export default function PreviewResult() {
             <div className="py-2">
                 <label><p>Level</p></label>
                 <select
-                    className='border-2 rounded-2xl bg-blue-200 p-2'
+                    className='border-2 rounded-2xl bg-purple-200 p-2'
                     value={resultData.level}
                     onChange={e => setResultData(prev => ({ ...prev, level: e.target.value }))}
                 >
@@ -132,9 +129,12 @@ export default function PreviewResult() {
                             <td className="border border-gray-400 px-4 py-2">{student.matricNumber}</td>
                             {courses.map((course, cidx) => (
                                 <td key={cidx} className="border border-gray-400 px-4 py-2">
-                                {student.results && student.results[course] !== undefined
-                                    ? student.results[course]
-                                    : "-"}
+                                {(() => {
+                                    const result = student.results.find(r => r.courseCode === course);
+                                    return result
+                                        ? `${result.testScore + result.examScore} ${result.grade}`
+                                        : "-";
+                                    })()}
                                 </td>
                             ))}
                             </tr>

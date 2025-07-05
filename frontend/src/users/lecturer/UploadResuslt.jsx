@@ -29,13 +29,13 @@ function ConfirmResultUpload({ onConfirm, onDiscard }) {
                 <div className="flex gap-4">
                     <button
                         onClick={onConfirm}
-                        className="px-6 py-2 rounded-lg bg-purple-500 text-white font-semibold hover:bg-purple-600 transition"
+                        className="px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-600 transition"
                     >
                         Yes
                     </button>
                     <button
                         onClick={onDiscard}
-                        className="px-6 py-2 rounded-lg bg-gray-300 text-blue-700 font-semibold hover:bg-gray-400 transition"
+                        className="px-6 py-2 rounded-lg bg-gray-300 text-purple-700 font-semibold hover:bg-gray-400 transition"
                     >
                         No
                     </button>
@@ -139,7 +139,7 @@ export default function UploadResult() {
                         <div className="overflow-x-auto">
                             <table className="table-auto w-full border-collapse border border-purple-400 bg-white">
                                 <thead>
-                                    <tr className="bg-blue-200">
+                                    <tr className="bg-purple-200">
                                         <th className="border border-purple-400 px-2 py-1">Full Name</th>
                                         <th className="border border-purple-400 px-2 py-1">Matric No</th>
                                         <th className="border border-purple-400 px-2 py-1">Test Score(40)</th>
@@ -204,6 +204,51 @@ export default function UploadResult() {
                             )}
                         </div>
                     </form>
+                )}
+                {results.length > 0 && results[0]?.isUploaded && (
+                <>
+                    <div className="mb-4 bg-purple-100 rounded-xl p-4 overflow-x-auto print-section">
+                        <h3 className="font-bold text-purple-800 mb-2">Uploaded Results for {courseCode}</h3>
+                        <p>Level: {results[0].student.currentLevel}</p>
+                        <p>Session: {results[0].student.currentSession}</p>
+                        <p>Semester: {results[0].student.currentSemester}</p>
+                        <table className="table-auto w-full border-collapse border border-purple-400 bg-white">
+                            <thead>
+                                <tr className="bg-purple-200">
+                                    <th className="border border-purple-400 px-2 py-1">Full Name</th>
+                                    <th className="border border-purple-400 px-2 py-1">Matric No</th>
+                                    <th className="border border-purple-400 px-2 py-1">Test Score</th>
+                                    <th className="border border-purple-400 px-2 py-1">Exam Score</th>
+                                    <th className="border border-purple-400 px-2 py-1">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {results.map(result => (
+                                    <tr key={result._id}>
+                                        <td className="border border-purple-400 px-2 py-1">{result.student?.fullName}</td>
+                                        <td className="border border-purple-400 px-2 py-1">{result.student?.matricNumber}</td>
+                                        <td className="border border-purple-400 px-2 py-1">{result.testScore}</td>
+                                        <td className="border border-purple-400 px-2 py-1">{result.examScore}</td>
+                                        <td className="border border-purple-400 px-2 py-1">{result.grade}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <button
+                        onClick={() => {
+                            const printContents = document.querySelector('.print-section').innerHTML;
+                            const originalContents = document.body.innerHTML;
+                            document.body.innerHTML = printContents;
+                            window.print();
+                            document.body.innerHTML = originalContents;
+                            window.location.reload();
+                        }}
+                        className="px-4 py-2 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition print:hidden"
+                    >
+                        Print Results
+                    </button>
+                </>
                 )}
             </div>
         </div>

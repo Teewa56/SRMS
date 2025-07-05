@@ -35,7 +35,7 @@ export default function ConfirmUpdate({ onConfirm, onDiscard }) {
                 <div className="flex gap-4">
                     <button
                         onClick={onConfirm}
-                        className="px-6 py-2 rounded-lg bg-purple-500 text-white font-semibold hover:bg-blue-600 transition"
+                        className="px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-600 transition"
                     >
                         Yes
                     </button>

@@ -89,7 +89,7 @@ const NewStudent = () => {
                     {/* Profile Picture Upload */}
                     <div className="flex flex-col items-center mb-4">
                         <div
-                            className="relative w-28 h-28 rounded-full bg-blue-200 flex items-center justify-center cursor-pointer border-4 border-blue-400 hover:border-blue-600 transition"
+                            className="relative w-28 h-28 rounded-full bg-purple-200 flex items-center justify-center cursor-pointer border-4 border-blue-400 hover:border-blue-600 transition"
                             onClick={() => fileInputRef.current.click()}
                         >
                             {preview ? (
@@ -117,7 +117,7 @@ const NewStudent = () => {
                             placeholder="Full Name"
                             value={userInfo.fullName}
                             onChange={e => updateUserInfo('fullName', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -125,7 +125,7 @@ const NewStudent = () => {
                             placeholder="Matric Number"
                             value={userInfo.matricNumber}
                             onChange={e => updateUserInfo('matricNumber', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -133,13 +133,13 @@ const NewStudent = () => {
                             placeholder="School Email"
                             value={userInfo.schoolEmail}
                             onChange={e => updateUserInfo('schoolEmail', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <select
                             value={userInfo.department}
                             onChange={e => updateUserInfo('department', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         >
                             <option value="">Select Department</option>
@@ -150,7 +150,7 @@ const NewStudent = () => {
                         <select 
                             value={userInfo.faculty} 
                             onChange={e => updateUserInfo('faculty', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required>
                             <option value="">Select Faculty</option>
                             <option value="School of Computing">SOC</option>
@@ -162,19 +162,19 @@ const NewStudent = () => {
                             placeholder="Phone Number"
                             value={userInfo.phone}
                             onChange={e => updateUserInfo('phone', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                         />
                         <input
                             type="text"
                             placeholder="Current Session"
                             value={userInfo.currentSession}
                             onChange={e => updateUserInfo('currentSession', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full mt-4 py-2 rounded-lg bg-blue-500 text-white font-semibold text-lg hover:bg-blue-600 transition"
+                        className="w-full mt-4 py-2 rounded-lg bg-purple-500 text-white font-semibold text-lg hover:bg-purple-600 transition"
                     >
                         Register Student
                     </button>

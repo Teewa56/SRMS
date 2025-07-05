@@ -14,7 +14,7 @@ const studentApi = axios.create({
 export const studentSignIn = (data) => studentApi.post('/signin', data);
 export const getStudentProfile = (studentId) => studentApi.get(`/profile/${studentId}`);
 
-export const getAllResults = () => studentApi.get('/results');
+export const getAllResults = (studentId) => studentApi.get(`/results/${studentId}`);
 export const getResult = (resultId) => studentApi.get(`/results/${resultId}`);
 
 export const getGPA = (studentId) => studentApi.get(`/gpa/${studentId}`);

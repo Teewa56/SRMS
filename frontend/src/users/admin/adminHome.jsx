@@ -69,7 +69,7 @@ export function AdminHome() {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center h-screen bg-blue-400">
+            <div className="flex justify-center items-center h-screen bg-purple-400">
                 <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
             </div>
         );
@@ -77,7 +77,7 @@ export function AdminHome() {
 
     if (error) {
         return (
-            <div className="flex justify-center items-center h-screen bg-blue-300">
+            <div className="flex justify-center items-center h-screen bg-purple-300">
                 <Toast text={error} />
             </div>
         );

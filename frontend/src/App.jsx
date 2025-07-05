@@ -75,10 +75,10 @@ const App = () => {
           <Route path='/admin/resultPreview' element={<AdminRoutes><PreviewResult /></AdminRoutes>} />
 
           <Route path='/lecturer' element={<LecturerRoutes><LecturerHome /></LecturerRoutes>} />
-          <Route path='/lecturer/uploadResult' element={<LecturerHome><UploadResult /></LecturerHome>} />
+          <Route path='/lecturer/uploadResult' element={<LecturerRoutes><UploadResult /></LecturerRoutes>} />
 
           <Route path='/student' element={<StudentRoutes><StudentHome /></StudentRoutes>} />
-          <Route path='/student/results' element={<StudentHome><Results /></StudentHome>} />
+          <Route path='/student/results' element={<StudentRoutes><Results /></StudentRoutes>} />
           <Route path='/student/result/:studentId' element={<StudentRoutes><Result /></StudentRoutes>} />
 
           <Route path="*" element={<NotFoundError />} />

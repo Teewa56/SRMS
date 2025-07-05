@@ -146,7 +146,7 @@ module.exports = {
             const currentSemester = 'First Semester';
         
             registeredCourses = coursesData[faculty][department][currentLevel][currentSemester].map(
-                course => course['code']
+                course => course.code
             );
             const newStudent = new Student({
                 fullName,
@@ -200,10 +200,12 @@ module.exports = {
         try {
             const students = await Student.find({
                 currentLevel: level,
-                department,
+                department: department,
                 currentSemester: semester
             });
-
+            if (!students.length) {
+                return res.status(404).json({ message: 'No students found for the specified criteria' });
+            }
             const results = await Promise.all(students.map(async (student) => {
                 const studentResults = await Result.find({
                     student: student._id,
@@ -214,7 +216,7 @@ module.exports = {
                 return {
                     studentId: student._id,
                     fullName: student.fullName,
-                    matricNo: student.matricNo,
+                    matricNumber: student.matricNumber,
                     cgpa: student.cgpa,
                     results: studentResults
                 };
@@ -236,7 +238,7 @@ module.exports = {
             for (const student of students) {
                 const { department, currentLevel, currentSemester } = student;
                 const courses = coursesData[department]?.[currentLevel]?.[currentSemester] || [];
-                student.registeredCourses = courses.map(course => course['code']);
+                student.registeredCourses = courses.map(course => course.code);
                 await student.save();
             }
             return res.status(200).json({ message: 'Courses registered for all students' });

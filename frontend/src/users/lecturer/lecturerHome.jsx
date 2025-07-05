@@ -4,7 +4,6 @@ import handleApiError from '../../apiErrorHandler';
 import Toast from '../../components/Toast';
 import { LogOut } from 'lucide-react'
 import { AuthContext } from "../../context/AuthContext"
-import {Link} from 'react-router-dom'
 
 export default function LecturerHome(){
     const lecturerId = localStorage.getItem('userId');
@@ -35,15 +34,15 @@ export default function LecturerHome(){
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center h-screen bg-blue-400">
-                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+            <div className="flex justify-center items-center h-screen bg-purple-400">
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-500"></div>
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="flex justify-center items-center h-screen bg-blue-300">
+            <div className="flex justify-center items-center h-screen bg-purple-300">
                 <Toast text={error} />
             </div>
         );
@@ -56,7 +55,7 @@ export default function LecturerHome(){
     return (
         <div className="bg-purple-400 h-screen">
             <div className="max-w-md mx-auto flex flex-col gap-2 p-4">
-                <div className="flex justify-between items-center bg-blue-400 rounded-2xl p-4">
+                <div className="flex justify-between items-center bg-purple-600 rounded-2xl p-4">
                     <div className="flex items-start gap-2 justify-start">
                         <img
                             src={lecturerProfile?.profilePic || "/images/newUser.svg"}
@@ -83,11 +82,11 @@ export default function LecturerHome(){
                 ) : (
                     <div className="grid grid-cols-2 gap-2">
                         {courses.map((course, idx) => (
-                            <Link key={idx} 
-                                to={`/lecturer/uploadResult?courseCode=${course}`}
+                            <div key={idx} 
+                                onClick={() => window.location.href = `/lecturer/uploadResult?courseCode=${course}`}
                                 className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
                                 {course}
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 )}

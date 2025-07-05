@@ -26,12 +26,12 @@ export default function Result() {
             setLoading(true);
             try {
                 const res = await getResult(studentId, {data: payload});
-                setResult(res.data.results);
+                setResult(res.data.semesterResults[0]?.courses || []);
                 const gpaRes = await getGPA(studentId);
                 const studentRes = await getStudentProfile(studentId);
-                setStudent(studentRes.data.student);
-                setGpa(gpaRes.data.gpa);
-                setCGPA(gpaRes.data.cgpa);
+                setStudent(studentRes.data);
+                setGpa(gpaRes.data.gpData.gpa);
+                setCGPA(gpaRes.data.gpData.cgpa);
             } catch (err) {
                 handleApiError(err, setError, "An unexpected error occurred");
             } finally {
@@ -42,7 +42,7 @@ export default function Result() {
     }, [studentId, payload]);
 
     return (
-        <div className="mx-auto max-w-md px-2 bg-purple-400">
+        <div className="mx-auto max-w-md p-4 bg-purple-400">
             <div className="flex items-center justify-start gap-4 mb-2 print:hidden">
                 <img
                     src="/images/back-button.svg"
@@ -91,7 +91,7 @@ export default function Result() {
 
             {gpa !== null && (
                 <div className="mt-4 p-4 border rounded-xl flex items-center justify-between text-sm">
-                    <strong>GPA: {gpa}</strong>
+                    <strong>GPA: {gpa.toFixed(2)}</strong>
                     <strong>CGPA: {cGPA}</strong>
                 </div>
             )}

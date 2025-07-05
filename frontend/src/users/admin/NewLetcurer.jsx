@@ -122,7 +122,7 @@ export default function NewLecturer() {
                     {/* Profile Picture Upload */}
                     <div className="flex flex-col items-center mb-4">
                         <div
-                            className="relative w-28 h-28 rounded-full bg-blue-200 flex items-center justify-center cursor-pointer border-4 border-blue-400 hover:border-blue-600 transition"
+                            className="relative w-28 h-28 rounded-full bg-purple-200 flex items-center justify-center cursor-pointer border-4 border-blue-400 hover:border-blue-600 transition"
                             onClick={() => fileInputRef.current.click()}
                         >
                             {preview ? (
@@ -150,7 +150,7 @@ export default function NewLecturer() {
                             placeholder="Full Name"
                             value={lecturerInfo.fullName}
                             onChange={e => updateLecturerInfo('fullName', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -158,7 +158,7 @@ export default function NewLecturer() {
                             placeholder="Work Email"
                             value={lecturerInfo.workEmail}
                             onChange={e => updateLecturerInfo('workEmail', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -166,7 +166,7 @@ export default function NewLecturer() {
                             placeholder="Work ID"
                             value={lecturerInfo.workId}
                             onChange={e => updateLecturerInfo('workId', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -174,12 +174,12 @@ export default function NewLecturer() {
                             placeholder="Phone Number"
                             value={lecturerInfo.phone}
                             onChange={e => updateLecturerInfo('phone', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                         />
                         <select
                             value={lecturerInfo.faculty}
                             onChange={e => updateLecturerInfo('faculty', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         >
                             <option value="">Select Faculty</option>
@@ -190,7 +190,7 @@ export default function NewLecturer() {
                         <select
                             value={lecturerInfo.department}
                             onChange={e => updateLecturerInfo('department', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                             disabled={!lecturerInfo.faculty}
                         >
@@ -204,7 +204,7 @@ export default function NewLecturer() {
                     {lecturerInfo.department && (
                         <div className="mt-6">
                             <label className="block text-blue-700 font-semibold mb-2">Select Courses to Assign:</label>
-                            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto bg-blue-50 p-3 rounded-lg border border-blue-200">
+                            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto bg-purple-50 p-3 rounded-lg border border-blue-200">
                                 {availableCourses.map((course, idx) => (
                                     <label key={idx} className="flex items-center space-x-2 cursor-pointer">
                                         <input
@@ -221,7 +221,7 @@ export default function NewLecturer() {
                     )}
                     <button
                         type="submit"
-                        className="w-full mt-6 py-2 rounded-lg bg-blue-500 text-white font-semibold text-lg hover:bg-blue-600 transition"
+                        className="w-full mt-6 py-2 rounded-lg bg-purple-500 text-white font-semibold text-lg hover:bg-purple-600 transition"
                         disabled={loading}
                     >
                         Register Lecturer

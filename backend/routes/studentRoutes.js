@@ -9,7 +9,7 @@ const {
 } = require('../controllers/studentController');
 
 router.post('/signin', signIn);
-router.get('/results', getAllResults);
+router.get('/results/:studentId', getAllResults);
 router.get('/profile/:studentId', getProfile);
 router.get('/results/:resultId', getResult);
 router.get('/gpa/:studentId', getGPA);

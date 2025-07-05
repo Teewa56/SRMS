@@ -81,7 +81,7 @@ export default function CreateAccount() {
     }
 
     return (
-        <div className="h-screen w-full flex items-center justify-center bg-purple-400">
+        <div className="h-screen p-4 w-full flex items-center justify-center bg-purple-400">
             {loading && <Loading />}
             {error && <Toast text={error} color="red" />}
             <div className="max-w-md w-full shadow-lg bg-white rounded-2xl p-6 bg-opacity-90">
@@ -91,7 +91,7 @@ export default function CreateAccount() {
                 <form onSubmit={createUser} className="space-y-4">
                     <div className="flex flex-col items-center mb-4">
                         <div
-                            className="relative w-24 h-24 rounded-full bg-blue-500 flex items-center justify-center cursor-pointer border-2 border-blue-400 hover:border-blue-600 transition"
+                            className="relative w-24 h-24 rounded-full bg-purple-500 flex items-center justify-center cursor-pointer border-2 border-blue-400 hover:border-blue-600 transition"
                             onClick={() => fileInputRef.current.click()}
                         >
                             {preview ? (
@@ -119,7 +119,7 @@ export default function CreateAccount() {
                             placeholder="Full Name"
                             value={userInfo.fullName}
                             onChange={e => updateUserInfo('fullName', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -127,7 +127,7 @@ export default function CreateAccount() {
                             placeholder="Work Email"
                             value={userInfo.workEmail}
                             onChange={e => updateUserInfo('workEmail', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -135,7 +135,7 @@ export default function CreateAccount() {
                             placeholder="Password"
                             value={userInfo.password}
                             onChange={e => updateUserInfo('password', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                             required
                         />
                         <input
@@ -143,19 +143,19 @@ export default function CreateAccount() {
                             placeholder="Phone Number"
                             value={userInfo.phone}
                             onChange={e => updateUserInfo('phone', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                         />
                         <input
                             type="text"
                             placeholder="Admin ID"
                             value={userInfo.adminId}
                             onChange={e => updateUserInfo('adminId', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-blue-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full mt-4 py-2 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600 transition"
+                        className="w-full mt-4 py-2 rounded-lg bg-purple-500 text-white font-semibold hover:bg-purple-600 transition"
                     >
                         Create Account
                     </button>

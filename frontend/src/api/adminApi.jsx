@@ -23,7 +23,7 @@ export const getAllStudents = () => adminApi.get('/students');
 export const createStudent = (data) => adminApi.post('/students/create', data);
 
 export const releaseResults = () => adminApi.post('/results/release');
-export const previewResult = (data) => adminApi.post('/results/preview', { data });
+export const previewResult = (data) => adminApi.post('/results/preview',  data );
 export const registerCoursesForSemester = () => adminApi.post('/courses/register', {});
 export const updateStudentSemesterLevel = () => adminApi.post('/students/update-semester', {});
 

@@ -50,7 +50,7 @@ export default function SignIn() {
     }
 
     return (
-        <div className="h-screen w-full flex items-center justify-center bg-purple-400">
+        <div className="h-screen w-full p-4 flex items-center justify-center bg-purple-400">
             {loading && <Loading />}
             {error && <Toast text={error} color="red" />}
             <div className="max-w-md w-full shadow-lg rounded-2xl p-6 bg-white">
@@ -66,7 +66,7 @@ export default function SignIn() {
                             required
                             id="fullName"
                             type="text"
-                            placeholder="Enter your full name"
+                            placeholder="Enter your email"
                             value={userInfo.email}
                             onChange={(e) => updateUserInfo('email', e.target.value)}
                             className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -90,7 +90,7 @@ export default function SignIn() {
                     <button
                         disabled={loading || !userInfo.email || !userInfo.password }
                         type="submit"
-                        className={`w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+                        className={`w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 
                             ${loading || !userInfo.email || !userInfo.password ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                         Sign In

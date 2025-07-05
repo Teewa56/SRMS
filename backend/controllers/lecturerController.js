@@ -116,17 +116,17 @@ module.exports = {
         const { lecturerId } = req.params;
         const { courseCode } = req.query;
         try {
-            const student = await Student.find({ registeredCourses: courseCode });
-            if (!student) {
+            const students = await Student.find({ registeredCourses: courseCode });
+            if (!students || students.length === 0) {
                 return res.status(404).json({ message: 'No students currently registered for this course' });
             }
-            const { currentSemester, currentLevel } = student;
+            const { currentSemester, currentLevel } = students[0];
             const results = await Result.find({
                 courseCode,
                 lecturer: lecturerId,
                 semester: currentSemester,
                 level: currentLevel
-            }).populate('student', 'fullName matricNo');
+            }).populate('student');
             if (!results.length) {
                 return res.status(404).json({ message: 'No results found for this course in the current semester/level' });
             }
@@ -138,6 +138,5 @@ module.exports = {
             console.error('Error in getCourseResults:', error.message);
             return res.status(500).json({ message: `Server error: ${error.message}` });
         }
-    },
-    
+    },  
 }
