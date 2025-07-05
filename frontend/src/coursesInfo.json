@@ -24,24 +24,24 @@
     },
     "Cyber Security": {
       "100 Level": {
-        "First Semester": ["CYB 101", "CYB 103", "CYB 105", "CYB 107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
-        "Second Semester": ["CYB 102", "CYB 104", "CYB 106", "CYB 108", "MTS 102", "MTS 104", "GNS 102", "EEC 107"]
+        "First Semester": ["CYS 101", "CYS103", "CYS105", "CYS107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
+        "Second Semester": ["CYS102", "CYS104", "CYS106", "CYS108", "MTS 102", "MTS 104", "GNS 102", "EEC 107"]
       },
       "200 Level": {
-        "First Semester": ["CYB 201", "CYB 203", "CYB 205", "CYB 207", "CYB 209", "CYB 211", "STA 205", "MTS 201"],
-        "Second Semester": ["CYB 202", "CYB 204", "CYB 206", "CYB 208", "CYB 210", "CYB 212", "STA 206", "MTS 202"]
+        "First Semester": ["CYS 201", "CYS 203", "CYS 205", "CYS 207", "CYS 209", "CYS 211", "STA 205", "MTS 201"],
+        "Second Semester": ["CYS 202", "CYS 204", "CYS 206", "CYS 208", "CYS 210", "CYS 212", "STA 206", "MTS 202"]
       },
       "300 Level": {
-        "First Semester": ["CYB 301", "CYB 303", "CYB 305", "CYB 307", "CYB 309", "CYB 311", "CYB 313", "GNS 301"],
-        "Second Semester": ["CYB 302", "CYB 304", "CYB 306", "CYB 308", "CYB 310", "CYB 312", "CYB 314", "GNS 302"]
+        "First Semester": ["CYS 301", "CYS 303", "CYS 305", "CYS 307", "CYS 309", "CYS 311", "CYS 313", "GNS 301"],
+        "Second Semester": ["CYS 302", "CYS 304", "CYS 306", "CYS 308", "CYS 310", "CYS 312", "CYS 314", "GNS 302"]
       },
       "400 Level": {
-        "First Semester": ["CYB 401", "CYB 403", "CYB 405", "CYB 407", "CYB 409", "CYB 411", "CYB 413", "ENT 401"],
-        "Second Semester": ["CYB 402", "CYB 404", "CYB 406", "CYB 408", "CYB 410", "CYB 412", "CYB 414", "ENT 402"]
+        "First Semester": ["CYS 401", "CYS 403", "CYS 405", "CYS 407", "CYS 409", "CYS 411", "CYS 413", "ENT 401"],
+        "Second Semester": ["CYS 402", "CYS 404", "CYS 406", "CYS 408", "CYS 410", "CYS 412", "CYS 414", "ENT 402"]
       },
       "500 Level": {
-        "First Semester": ["CYB 501", "CYB 503", "CYB 505", "CYB 507", "CYB 509", "CYB 511", "CYB 513", "CYB 515"],
-        "Second Semester": ["CYB 502", "CYB 504", "CYB 506", "CYB 508", "CYB 599", "CYB 591", "CYB 593", "CYB 595"]
+        "First Semester": ["CYS 501", "CYS 503", "CYS 505", "CYS 507", "CYS 509", "CYS 511", "CYS 513", "CYS 515"],
+        "Second Semester": ["CYS 502", "CYS 504", "CYS 506", "CYS 508", "CYS 599", "CYS 591", "CYS 593", "CYS 595"]
       }
     },
     "Information Technology": {

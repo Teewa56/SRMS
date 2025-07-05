@@ -5,12 +5,12 @@ const Result = require('../models/resultModel');
 const bcrypt = require('bcrypt');
 const coursesData = require('../coursesInfo.json');
 
-const getPoints = (grade) => {
-    if (grade >= 70) return { point: 5 };
-    if (grade >= 60) return { point: 4 };
-    if (grade >= 50) return { point: 3 };
-    if (grade >= 45) return { point: 2 };
-    if (grade >= 40) return { point: 1 };
+const getPoints = (score) => {
+    if (score >= 70) return { point: 5 };
+    if (score >= 60) return { point: 4 };
+    if (score >= 50) return { point: 3 };
+    if (score >= 45) return { point: 2 };
+    if (score >= 40) return { point: 1 };
     return { grade: 'F', point: 0 };
 };
 
@@ -74,8 +74,8 @@ module.exports = {
         }
     },
     async releaseResults(req, res) {
-        try{
-            const  results = await Result.find({isReleased: false});
+        try {
+            const results = await Result.find({ isReleased: false });
             if (!results.length) {
                 return res.status(404).json({ message: 'No results available to release' });
             }
@@ -85,18 +85,37 @@ module.exports = {
                 if (!student) continue;
                 const studentResults = await Result.find({ student: studentId, isReleased: false });
                 if (studentResults.length > 0) {
-                    studentResults.forEach(result => {    
-                        //calculate the CGPA and GPA and save it
-                        //also update the semsterscompleted
+                    await Promise.all(studentResults.map(async result => {
                         result.isReleased = true;
-                        result.save();
-                    });
+                        await result.save();
+                    }));
+                    let totalWeightedPoints = 0;
+                    let totalUnits = 0;
+                    for (const result of studentResults) {
+                        const courseInfo = Object.values(coursesData)
+                            .flatMap(faculty => Object.values(faculty))
+                            .flatMap(dept => Object.values(dept))
+                            .flatMap(level => Object.values(level))
+                            .flat()
+                            .find(course => course.code === result.courseCode);
+
+                        const units = courseInfo ? courseInfo.units : 0;
+                        const { point } = getPoints(result.testScore + result.examScore);
+                        totalWeightedPoints += point * units;
+                        totalUnits += units;
+                    }
+                    const semesterGPA = totalUnits > 0 ? (totalWeightedPoints / totalUnits) : 0;
+                    const newSemstersCompleted = student.semestersCompleted + 1;
+                    const newCGPA = +(((student.cgpa * student.semestersCompleted) + semesterGPA) / newSemstersCompleted).toFixed(2);
+                    student.semesterGPA = semesterGPA;
+                    student.cgpa = newCGPA;
+                    student.semestersCompleted = newSemstersCompleted;
                     await student.save();
                 }
             }
             res.status(200).json({ message: 'Results released successfully', results });
         } catch (error) {
-            res.status(500).json({ message: 'Error fetching lecturers', error });
+            res.status(500).json({ message: 'Error releasing results', error });
         }
     },
     async getAllLecturers(req, res) {
@@ -127,7 +146,7 @@ module.exports = {
             const currentSemester = 'First Semester';
         
             registeredCourses = coursesData[faculty][department][currentLevel][currentSemester].map(
-                course => course
+                course => course['code']
             );
             const newStudent = new Student({
                 fullName,
@@ -217,7 +236,7 @@ module.exports = {
             for (const student of students) {
                 const { department, currentLevel, currentSemester } = student;
                 const courses = coursesData[department]?.[currentLevel]?.[currentSemester] || [];
-                student.registeredCourses = courses.map(course => course['Course-Code']);
+                student.registeredCourses = courses.map(course => course['code']);
                 await student.save();
             }
             return res.status(200).json({ message: 'Courses registered for all students' });

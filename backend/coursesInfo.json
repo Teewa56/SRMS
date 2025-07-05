@@ -2,90 +2,450 @@
   "School of Computing": {
     "Computer Science": {
       "100 Level": {
-        "First Semester": ["CSC 101", "CSC 103", "CSC 105", "CSC 107", "MTS 101", "MTS 103", "PHY 101", "GNS 101"],
-        "Second Semester": ["EEC 105", "CSC 102", "CSC 104", "CSC 106", "MTS 102", "MTS 104", "PHY 102", "GNS 102"]
+        "First Semester": [
+          {"code": "CSC 101", "units": 3},
+          {"code": "CSC 103", "units": 2},
+          {"code": "CSC 105", "units": 3},
+          {"code": "CSC 107", "units": 2},
+          {"code": "MTS 101", "units": 4},
+          {"code": "MTS 103", "units": 3},
+          {"code": "PHY 101", "units": 3},
+          {"code": "GNS 101", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "EEC 105", "units": 3},
+          {"code": "CSC 102", "units": 3},
+          {"code": "CSC 104", "units": 2},
+          {"code": "CSC 106", "units": 3},
+          {"code": "MTS 102", "units": 4},
+          {"code": "MTS 104", "units": 3},
+          {"code": "PHY 102", "units": 3},
+          {"code": "GNS 102", "units": 2}
+        ]
       },
       "200 Level": {
-        "First Semester": ["CSC 201", "CSC 203", "CSC 205", "CSC 207", "CSC 209", "MTS 201", "MTS 203", "STA 205"],
-        "Second Semester": ["CSC 202", "CSC 204", "CSC 206", "CSC 208", "CSC 210", "MTS 202", "MTS 204", "STA 206"]
+        "First Semester": [
+          {"code": "CSC 201", "units": 3},
+          {"code": "CSC 203", "units": 2},
+          {"code": "CSC 205", "units": 3},
+          {"code": "CSC 207", "units": 2},
+          {"code": "CSC 209", "units": 3},
+          {"code": "MTS 201", "units": 4},
+          {"code": "MTS 203", "units": 3},
+          {"code": "STA 205", "units": 3}
+        ],
+        "Second Semester": [
+          {"code": "CSC 202", "units": 3},
+          {"code": "CSC 204", "units": 2},
+          {"code": "CSC 206", "units": 3},
+          {"code": "CSC 208", "units": 2},
+          {"code": "CSC 210", "units": 3},
+          {"code": "MTS 202", "units": 4},
+          {"code": "MTS 204", "units": 3},
+          {"code": "STA 206", "units": 3}
+        ]
       },
       "300 Level": {
-        "First Semester": ["CSC 301", "CSC 303", "CSC 305", "CSC 307", "CSC 309", "CSC 311", "CSC 313", "GNS 301"],
-        "Second Semester": ["CSC 302", "CSC 304", "CSC 306", "CSC 308", "CSC 310", "CSC 312", "CSC 314", "GNS 302"]
+        "First Semester": [
+          {"code": "CSC 301", "units": 3},
+          {"code": "CSC 303", "units": 2},
+          {"code": "CSC 305", "units": 3},
+          {"code": "CSC 307", "units": 2},
+          {"code": "CSC 309", "units": 3},
+          {"code": "CSC 311", "units": 2},
+          {"code": "CSC 313", "units": 3},
+          {"code": "GNS 301", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "CSC 302", "units": 3},
+          {"code": "CSC 304", "units": 2},
+          {"code": "CSC 306", "units": 3},
+          {"code": "CSC 308", "units": 2},
+          {"code": "CSC 310", "units": 3},
+          {"code": "CSC 312", "units": 2},
+          {"code": "CSC 314", "units": 3},
+          {"code": "GNS 302", "units": 2}
+        ]
       },
       "400 Level": {
-        "First Semester": ["CSC 401", "CSC 403", "CSC 405", "CSC 407", "CSC 409", "CSC 411", "CSC 413", "ENT 401"],
-        "Second Semester": ["CSC 402", "CSC 404", "CSC 406", "CSC 408", "CSC 410", "CSC 412", "CSC 414", "ENT 402"]
+        "First Semester": [
+          {"code": "CSC 401", "units": 3},
+          {"code": "CSC 403", "units": 2},
+          {"code": "CSC 405", "units": 3},
+          {"code": "CSC 407", "units": 2},
+          {"code": "CSC 409", "units": 3},
+          {"code": "CSC 411", "units": 2},
+          {"code": "CSC 413", "units": 3},
+          {"code": "ENT 401", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "CSC 402", "units": 3},
+          {"code": "CSC 404", "units": 2},
+          {"code": "CSC 406", "units": 3},
+          {"code": "CSC 408", "units": 2},
+          {"code": "CSC 410", "units": 3},
+          {"code": "CSC 412", "units": 2},
+          {"code": "CSC 414", "units": 3},
+          {"code": "ENT 402", "units": 2}
+        ]
       },
       "500 Level": {
-        "First Semester": ["CSC 501", "CSC 503", "CSC 505", "CSC 507", "CSC 509", "CSC 511", "CSC 513", "CSC 515"],
-        "Second Semester": ["CSC 502", "CSC 504", "CSC 506", "CSC 508", "CSC 599", "CSC 591", "CSC 593", "CSC 595"]
+        "First Semester": [
+          {"code": "CSC 501", "units": 3},
+          {"code": "CSC 503", "units": 2},
+          {"code": "CSC 505", "units": 3},
+          {"code": "CSC 507", "units": 2},
+          {"code": "CSC 509", "units": 3},
+          {"code": "CSC 511", "units": 2},
+          {"code": "CSC 513", "units": 3},
+          {"code": "CSC 515", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "CSC 502", "units": 3},
+          {"code": "CSC 504", "units": 2},
+          {"code": "CSC 506", "units": 3},
+          {"code": "CSC 508", "units": 2},
+          {"code": "CSC 599", "units": 6},
+          {"code": "CSC 591", "units": 2},
+          {"code": "CSC 593", "units": 2},
+          {"code": "CSC 595", "units": 2}
+        ]
       }
     },
     "Cyber Security": {
       "100 Level": {
-        "First Semester": ["CYB 101", "CYB 103", "CYB 105", "CYB 107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
-        "Second Semester": ["CYB 102", "CYB 104", "CYB 106", "CYB 108", "MTS 102", "MTS 104", "GNS 102", "EEC 107"]
+        "First Semester": [
+          {"code": "CYS 101", "units": 3},
+          {"code": "CYS 103", "units": 2},
+          {"code": "CYS 105", "units": 3},
+          {"code": "CYS 107", "units": 2},
+          {"code": "MTS 101", "units": 4},
+          {"code": "MTS 103", "units": 3},
+          {"code": "GNS 101", "units": 2},
+          {"code": "EEC 105", "units": 3}
+        ],
+        "Second Semester": [
+          {"code": "CYS 102", "units": 3},
+          {"code": "CYS 104", "units": 2},
+          {"code": "CYS 106", "units": 3},
+          {"code": "CYS 108", "units": 2},
+          {"code": "MTS 102", "units": 4},
+          {"code": "MTS 104", "units": 3},
+          {"code": "GNS 102", "units": 2},
+          {"code": "EEC 107", "units": 3}
+        ]
       },
       "200 Level": {
-        "First Semester": ["CYB 201", "CYB 203", "CYB 205", "CYB 207", "CYB 209", "CYB 211", "STA 205", "MTS 201"],
-        "Second Semester": ["CYB 202", "CYB 204", "CYB 206", "CYB 208", "CYB 210", "CYB 212", "STA 206", "MTS 202"]
+        "First Semester": [
+          {"code": "CYS 201", "units": 3},
+          {"code": "CYS 203", "units": 2},
+          {"code": "CYS 205", "units": 3},
+          {"code": "CYS 207", "units": 2},
+          {"code": "CYS 209", "units": 3},
+          {"code": "CYS 211", "units": 2},
+          {"code": "STA 205", "units": 3},
+          {"code": "MTS 201", "units": 4}
+        ],
+        "Second Semester": [
+          {"code": "CYS 202", "units": 3},
+          {"code": "CYS 204", "units": 2},
+          {"code": "CYS 206", "units": 3},
+          {"code": "CYS 208", "units": 2},
+          {"code": "CYS 210", "units": 3},
+          {"code": "CYS 212", "units": 2},
+          {"code": "STA 206", "units": 3},
+          {"code": "MTS 202", "units": 4}
+        ]
       },
       "300 Level": {
-        "First Semester": ["CYB 301", "CYB 303", "CYB 305", "CYB 307", "CYB 309", "CYB 311", "CYB 313", "GNS 301"],
-        "Second Semester": ["CYB 302", "CYB 304", "CYB 306", "CYB 308", "CYB 310", "CYB 312", "CYB 314", "GNS 302"]
+        "First Semester": [
+          {"code": "CYS 301", "units": 3},
+          {"code": "CYS 303", "units": 2},
+          {"code": "CYS 305", "units": 3},
+          {"code": "CYS 307", "units": 2},
+          {"code": "CYS 309", "units": 3},
+          {"code": "CYS 311", "units": 2},
+          {"code": "CYS 313", "units": 3},
+          {"code": "GNS 301", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "CYS 302", "units": 3},
+          {"code": "CYS 304", "units": 2},
+          {"code": "CYS 306", "units": 3},
+          {"code": "CYS 308", "units": 2},
+          {"code": "CYS 310", "units": 3},
+          {"code": "CYS 312", "units": 2},
+          {"code": "CYS 314", "units": 3},
+          {"code": "GNS 302", "units": 2}
+        ]
       },
       "400 Level": {
-        "First Semester": ["CYB 401", "CYB 403", "CYB 405", "CYB 407", "CYB 409", "CYB 411", "CYB 413", "ENT 401"],
-        "Second Semester": ["CYB 402", "CYB 404", "CYB 406", "CYB 408", "CYB 410", "CYB 412", "CYB 414", "ENT 402"]
+        "First Semester": [
+          {"code": "CYS 401", "units": 3},
+          {"code": "CYS 403", "units": 2},
+          {"code": "CYS 405", "units": 3},
+          {"code": "CYS 407", "units": 2},
+          {"code": "CYS 409", "units": 3},
+          {"code": "CYS 411", "units": 2},
+          {"code": "CYS 413", "units": 3},
+          {"code": "ENT 401", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "CYS 402", "units": 3},
+          {"code": "CYS 404", "units": 2},
+          {"code": "CYS 406", "units": 3},
+          {"code": "CYS 408", "units": 2},
+          {"code": "CYS 410", "units": 3},
+          {"code": "CYS 412", "units": 2},
+          {"code": "CYS 414", "units": 3},
+          {"code": "ENT 402", "units": 2}
+        ]
       },
       "500 Level": {
-        "First Semester": ["CYB 501", "CYB 503", "CYB 505", "CYB 507", "CYB 509", "CYB 511", "CYB 513", "CYB 515"],
-        "Second Semester": ["CYB 502", "CYB 504", "CYB 506", "CYB 508", "CYB 599", "CYB 591", "CYB 593", "CYB 595"]
+        "First Semester": [
+          {"code": "CYS 501", "units": 3},
+          {"code": "CYS 503", "units": 2},
+          {"code": "CYS 505", "units": 3},
+          {"code": "CYS 507", "units": 2},
+          {"code": "CYS 509", "units": 3},
+          {"code": "CYS 511", "units": 2},
+          {"code": "CYS 513", "units": 3},
+          {"code": "CYS 515", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "CYS 502", "units": 3},
+          {"code": "CYS 504", "units": 2},
+          {"code": "CYS 506", "units": 3},
+          {"code": "CYS 508", "units": 2},
+          {"code": "CYS 599", "units": 6},
+          {"code": "CYS 591", "units": 2},
+          {"code": "CYS 593", "units": 2},
+          {"code": "CYS 595", "units": 2}
+        ]
       }
     },
     "Information Technology": {
       "100 Level": {
-        "First Semester": ["IFT 101", "IFT 103", "IFT 105", "IFT 107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
-        "Second Semester": ["IFT 102", "IFT 104", "IFT 106", "IFT 108", "MTS 102", "MTS 104", "GNS 102", "PHY 101"]
+        "First Semester": [
+          {"code": "IFT 101", "units": 3},
+          {"code": "IFT 103", "units": 2},
+          {"code": "IFT 105", "units": 3},
+          {"code": "IFT 107", "units": 2},
+          {"code": "MTS 101", "units": 4},
+          {"code": "MTS 103", "units": 3},
+          {"code": "GNS 101", "units": 2},
+          {"code": "EEC 105", "units": 3}
+        ],
+        "Second Semester": [
+          {"code": "IFT 102", "units": 3},
+          {"code": "IFT 104", "units": 2},
+          {"code": "IFT 106", "units": 3},
+          {"code": "IFT 108", "units": 2},
+          {"code": "MTS 102", "units": 4},
+          {"code": "MTS 104", "units": 3},
+          {"code": "GNS 102", "units": 2},
+          {"code": "PHY 101", "units": 3}
+        ]
       },
       "200 Level": {
-        "First Semester": ["IFT 201", "IFT 203", "IFT 205", "IFT 207", "IFT 209", "IFT 211", "STA 205", "MTS 201"],
-        "Second Semester": ["IFT 202", "IFT 204", "IFT 206", "IFT 208", "IFT 210", "IFT 212", "STA 206", "MTS 202"]
+        "First Semester": [
+          {"code": "IFT 201", "units": 3},
+          {"code": "IFT 203", "units": 2},
+          {"code": "IFT 205", "units": 3},
+          {"code": "IFT 207", "units": 2},
+          {"code": "IFT 209", "units": 3},
+          {"code": "IFT 211", "units": 2},
+          {"code": "STA 205", "units": 3},
+          {"code": "MTS 201", "units": 4}
+        ],
+        "Second Semester": [
+          {"code": "IFT 202", "units": 3},
+          {"code": "IFT 204", "units": 2},
+          {"code": "IFT 206", "units": 3},
+          {"code": "IFT 208", "units": 2},
+          {"code": "IFT 210", "units": 3},
+          {"code": "IFT 212", "units": 2},
+          {"code": "STA 206", "units": 3},
+          {"code": "MTS 202", "units": 4}
+        ]
       },
       "300 Level": {
-        "First Semester": ["IFT 301", "IFT 303", "IFT 305", "IFT 307", "IFT 309", "IFT 311", "IFT 313", "GNS 301"],
-        "Second Semester": ["IFT 302", "IFT 304", "IFT 306", "IFT 308", "IFT 310", "IFT 312", "IFT 314", "GNS 302"]
+        "First Semester": [
+          {"code": "IFT 301", "units": 3},
+          {"code": "IFT 303", "units": 2},
+          {"code": "IFT 305", "units": 3},
+          {"code": "IFT 307", "units": 2},
+          {"code": "IFT 309", "units": 3},
+          {"code": "IFT 311", "units": 2},
+          {"code": "IFT 313", "units": 3},
+          {"code": "GNS 301", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "IFT 302", "units": 3},
+          {"code": "IFT 304", "units": 2},
+          {"code": "IFT 306", "units": 3},
+          {"code": "IFT 308", "units": 2},
+          {"code": "IFT 310", "units": 3},
+          {"code": "IFT 312", "units": 2},
+          {"code": "IFT 314", "units": 3},
+          {"code": "GNS 302", "units": 2}
+        ]
       },
       "400 Level": {
-        "First Semester": ["IFT 401", "IFT 403", "IFT 405", "IFT 407", "IFT 409", "IFT 411", "IFT 413", "ENT 401"],
-        "Second Semester": ["IFT 402", "IFT 404", "IFT 406", "IFT 408", "IFT 410", "IFT 412", "IFT 414", "ENT 402"]
+        "First Semester": [
+          {"code": "IFT 401", "units": 3},
+          {"code": "IFT 403", "units": 2},
+          {"code": "IFT 405", "units": 3},
+          {"code": "IFT 407", "units": 2},
+          {"code": "IFT 409", "units": 3},
+          {"code": "IFT 411", "units": 2},
+          {"code": "IFT 413", "units": 3},
+          {"code": "ENT 401", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "IFT 402", "units": 3},
+          {"code": "IFT 404", "units": 2},
+          {"code": "IFT 406", "units": 3},
+          {"code": "IFT 408", "units": 2},
+          {"code": "IFT 410", "units": 3},
+          {"code": "IFT 412", "units": 2},
+          {"code": "IFT 414", "units": 3},
+          {"code": "ENT 402", "units": 2}
+        ]
       },
       "500 Level": {
-        "First Semester": ["IFT 501", "IFT 503", "IFT 505", "IFT 507", "IFT 509", "IFT 511", "IFT 513", "IFT 515"],
-        "Second Semester": ["IFT 502", "IFT 504", "IFT 506", "IFT 508", "IFT 599", "IFT 591", "IFT 593", "IFT 595"]
+        "First Semester": [
+          {"code": "IFT 501", "units": 3},
+          {"code": "IFT 503", "units": 2},
+          {"code": "IFT 505", "units": 3},
+          {"code": "IFT 507", "units": 2},
+          {"code": "IFT 509", "units": 3},
+          {"code": "IFT 511", "units": 2},
+          {"code": "IFT 513", "units": 3},
+          {"code": "IFT 515", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "IFT 502", "units": 3},
+          {"code": "IFT 504", "units": 2},
+          {"code": "IFT 506", "units": 3},
+          {"code": "IFT 508", "units": 2},
+          {"code": "IFT 599", "units": 6},
+          {"code": "IFT 591", "units": 2},
+          {"code": "IFT 593", "units": 2},
+          {"code": "IFT 595", "units": 2}
+        ]
       }
     },
     "Software Engineering": {
       "100 Level": {
-        "First Semester": ["SEN 101", "SEN 103", "SEN 105", "SEN 107", "MTS 101", "MTS 103", "GNS 101", "EEC 105"],
-        "Second Semester": ["SEN 102", "SEN 104", "SEN 106", "SEN 108", "MTS 102", "MTS 104", "GNS 102", "PHY 101"]
+        "First Semester": [
+          {"code": "SEN 101", "units": 3},
+          {"code": "SEN 103", "units": 2},
+          {"code": "SEN 105", "units": 3},
+          {"code": "SEN 107", "units": 2},
+          {"code": "MTS 101", "units": 4},
+          {"code": "MTS 103", "units": 3},
+          {"code": "GNS 101", "units": 2},
+          {"code": "EEC 105", "units": 3}
+        ],
+        "Second Semester": [
+          {"code": "SEN 102", "units": 3},
+          {"code": "SEN 104", "units": 2},
+          {"code": "SEN 106", "units": 3},
+          {"code": "SEN 108", "units": 2},
+          {"code": "MTS 102", "units": 4},
+          {"code": "MTS 104", "units": 3},
+          {"code": "GNS 102", "units": 2},
+          {"code": "PHY 101", "units": 3}
+        ]
       },
       "200 Level": {
-        "First Semester": ["SEN 201", "SEN 203", "SEN 205", "SEN 207", "SEN 209", "SEN 211", "STA 205", "MTS 201"],
-        "Second Semester": ["SEN 202", "SEN 204", "SEN 206", "SEN 208", "SEN 210", "SEN 212", "STA 206", "MTS 202"]
+        "First Semester": [
+          {"code": "SEN 201", "units": 3},
+          {"code": "SEN 203", "units": 2},
+          {"code": "SEN 205", "units": 3},
+          {"code": "SEN 207", "units": 2},
+          {"code": "SEN 209", "units": 3},
+          {"code": "SEN 211", "units": 2},
+          {"code": "STA 205", "units": 3},
+          {"code": "MTS 201", "units": 4}
+        ],
+        "Second Semester": [
+          {"code": "SEN 202", "units": 3},
+          {"code": "SEN 204", "units": 2},
+          {"code": "SEN 206", "units": 3},
+          {"code": "SEN 208", "units": 2},
+          {"code": "SEN 210", "units": 3},
+          {"code": "SEN 212", "units": 2},
+          {"code": "STA 206", "units": 3},
+          {"code": "MTS 202", "units": 4}
+        ]
       },
       "300 Level": {
-        "First Semester": ["SEN 301", "SEN 303", "SEN 305", "SEN 307", "SEN 309", "SEN 311", "SEN 313", "GNS 301"],
-        "Second Semester": ["SEN 302", "SEN 304", "SEN 306", "SEN 308", "SEN 310", "SEN 312", "SEN 314", "GNS 302"]
+        "First Semester": [
+          {"code": "SEN 301", "units": 3},
+          {"code": "SEN 303", "units": 2},
+          {"code": "SEN 305", "units": 3},
+          {"code": "SEN 307", "units": 2},
+          {"code": "SEN 309", "units": 3},
+          {"code": "SEN 311", "units": 2},
+          {"code": "SEN 313", "units": 3},
+          {"code": "GNS 301", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "SEN 302", "units": 3},
+          {"code": "SEN 304", "units": 2},
+          {"code": "SEN 306", "units": 3},
+          {"code": "SEN 308", "units": 2},
+          {"code": "SEN 310", "units": 3},
+          {"code": "SEN 312", "units": 2},
+          {"code": "SEN 314", "units": 3},
+          {"code": "GNS 302", "units": 2}
+        ]
       },
       "400 Level": {
-        "First Semester": ["SEN 401", "SEN 403", "SEN 405", "SEN 407", "SEN 409", "SEN 411", "SEN 413", "ENT 401"],
-        "Second Semester": ["SEN 402", "SEN 404", "SEN 406", "SEN 408", "SEN 410", "SEN 412", "SEN 414", "ENT 402"]
+        "First Semester": [
+          {"code": "SEN 401", "units": 3},
+          {"code": "SEN 403", "units": 2},
+          {"code": "SEN 405", "units": 3},
+          {"code": "SEN 407", "units": 2},
+          {"code": "SEN 409", "units": 3},
+          {"code": "SEN 411", "units": 2},
+          {"code": "SEN 413", "units": 3},
+          {"code": "ENT 401", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "SEN 402", "units": 3},
+          {"code": "SEN 404", "units": 2},
+          {"code": "SEN 406", "units": 3},
+          {"code": "SEN 408", "units": 2},
+          {"code": "SEN 410", "units": 3},
+          {"code": "SEN 412", "units": 2},
+          {"code": "SEN 414", "units": 3},
+          {"code": "ENT 402", "units": 2}
+        ]
       },
       "500 Level": {
-        "First Semester": ["SEN 501", "SEN 503", "SEN 505", "SEN 507", "SEN 509", "SEN 511", "SEN 513", "SEN 515"],
-        "Second Semester": ["SEN 502", "SEN 504", "SEN 506", "SEN 508", "SEN 599", "SEN 591", "SEN 593", "SEN 595"]
+        "First Semester": [
+          {"code": "SEN 501", "units": 3},
+          {"code": "SEN 503", "units": 2},
+          {"code": "SEN 505", "units": 3},
+          {"code": "SEN 507", "units": 2},
+          {"code": "SEN 509", "units": 3},
+          {"code": "SEN 511", "units": 2},
+          {"code": "SEN 513", "units": 3},
+          {"code": "SEN 515", "units": 2}
+        ],
+        "Second Semester": [
+          {"code": "SEN 502", "units": 3},
+          {"code": "SEN 504", "units": 2},
+          {"code": "SEN 506", "units": 3},
+          {"code": "SEN 508", "units": 2},
+          {"code": "SEN 599", "units": 6},
+          {"code": "SEN 591", "units": 2},
+          {"code": "SEN 593", "units": 2},
+          {"code": "SEN 595", "units": 2}
+        ]
       }
     }
   }
