@@ -11,7 +11,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const limiter = require('./middleware/ratelimiter');
 
 const app = express();
-const deployedFrontendURL = 'https://result-system-frontend-sandy.vercel.app';
+const deployedFrontendURL = 'https://srms-liard.vercel.app';
 app.use(cors({
     credentials: true,
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
