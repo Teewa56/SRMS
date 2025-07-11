@@ -42,7 +42,7 @@ export default function Result() {
     }, [studentId, payload]);
 
     return (
-        <div className="mx-auto max-w-md p-4 bg-purple-400">
+        <div className="mx-auto max-w-md p-4">
             <div className="flex items-center justify-start gap-4 mb-2 print:hidden">
                 <img
                     src="/images/back-button.svg"

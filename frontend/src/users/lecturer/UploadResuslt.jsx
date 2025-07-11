@@ -117,7 +117,7 @@ export default function UploadResult() {
     }
 
     return (
-        <div className="bg-purple-400 h-screen">
+        <div className="h-screen">
             <div className="max-w-2xl mx-auto flex flex-col gap-4 p-4">
                 <h2 className="text-xl font-bold text-purple-800 mb-2">Upload Results for {courseCode}</h2>
                 {loading && <Loading />}

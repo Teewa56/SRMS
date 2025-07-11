@@ -64,7 +64,7 @@ export default function StudentHome(){
     }
 
     return (
-        <div className="bg-purple-400 h-screen">
+        <div className="h-screen">
             <div className="max-w-md mx-auto flex flex-col gap-2 p-4">
                 <div className="flex justify-between items-center bg-purple-600 rounded-2xl p-4">
                     <div className="flex items-start gap-2 justify-start">

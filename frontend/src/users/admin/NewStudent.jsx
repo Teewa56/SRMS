@@ -80,7 +80,7 @@ const NewStudent = () => {
     const dept = departments.Departments;
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-purple-400">
+        <div className="min-h-screen flex items-center justify-center">
             {loading && <Loading />}
             {error && <Toast text={error} color="red" />}
             <div className="max-w-lg w-full bg-opacity-95 shadow-2xl rounded-3xl p-4">

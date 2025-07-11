@@ -64,7 +64,7 @@ export default function PreviewResult() {
     }
 
     return (
-        <div className="h-screen p-2 bg-purple-400 ">
+        <div className="h-screen p-2">
             <div className='shadow-md p-2 mx-auto max-w-2xl'>
             <h3 className='font-bold text-2xl'>Preview Result</h3>
             <div className="py-2">

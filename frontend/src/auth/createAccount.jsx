@@ -81,7 +81,7 @@ export default function CreateAccount() {
     }
 
     return (
-        <div className="h-screen p-4 w-full flex items-center justify-center bg-purple-400">
+        <div className="h-screen p-4 w-full flex items-center justify-center ">
             {loading && <Loading />}
             {error && <Toast text={error} color="red" />}
             <div className="max-w-md w-full shadow-lg bg-white rounded-2xl p-6 bg-opacity-90">

@@ -50,7 +50,7 @@ export default function SignIn() {
     }
 
     return (
-        <div className="h-screen w-full p-4 flex items-center justify-center bg-purple-400">
+        <div className="h-screen w-full p-4 flex items-center justify-center">
             {loading && <Loading />}
             {error && <Toast text={error} color="red" />}
             <div className="max-w-md w-full shadow-lg rounded-2xl p-6 bg-white">
@@ -97,8 +97,8 @@ export default function SignIn() {
                     </button>
                 </form>
                 {userType === 'admin' &&
-                    <Link to='/newAdmin'>
-                    <p className="py-2">CreateAccount</p>
+                <Link to='/newAdmin'>
+                    <p className="py-2 text-fuchsia-500 underline decoration-2 fuchsia-amber-200">CreateAccount</p>
                 </Link>}
             </div>
         </div>

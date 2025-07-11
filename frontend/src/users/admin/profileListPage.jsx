@@ -37,7 +37,7 @@ export default function ProfileListPage() {
     }
 
     return (
-        <div className="max-w-md mx-auto p-4 bg-purple-400 rounded-xl">
+        <div className="max-w-md mx-auto p-4 rounded-xl">
             <h3 className="text-2xl font-bold mb-6">Profiles</h3>
             <nav className="flex border-b border-purple-300 mb-6">
                 {tabs.map(tab => (

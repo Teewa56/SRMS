@@ -113,7 +113,7 @@ export default function NewLecturer() {
     }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-purple-400">
+        <div className="flex items-center justify-center min-h-screen">
             {error && <Toast text={error} /> }
             <div className="max-w-md w-full shadow-2xl rounded-3xl p-4">
                 <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">Register New Lecturer</h2>

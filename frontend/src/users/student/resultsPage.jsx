@@ -27,7 +27,7 @@ export default function Results() {
     }, [studentId]);
     
     return (
-        <div className="max-w-md mx-auto bg-purple-400 p-4">
+        <div className="max-w-md mx-auto p-4">
             <div className="flex items-center justify-start gap-4 mb-2">
                 <img 
                     src="/images/back-button.svg" 

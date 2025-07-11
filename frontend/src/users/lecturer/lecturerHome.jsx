@@ -34,7 +34,7 @@ export default function LecturerHome(){
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center h-screen bg-purple-400">
+            <div className="flex justify-center items-center h-screen">
                 <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-500"></div>
             </div>
         );
@@ -42,7 +42,7 @@ export default function LecturerHome(){
 
     if (error) {
         return (
-            <div className="flex justify-center items-center h-screen bg-purple-300">
+            <div className="flex justify-center items-center h-screen">
                 <Toast text={error} />
             </div>
         );
@@ -53,7 +53,7 @@ export default function LecturerHome(){
     }
 
     return (
-        <div className="bg-purple-400 h-screen">
+        <div className="h-screen">
             <div className="max-w-md mx-auto flex flex-col gap-2 p-4">
                 <div className="flex justify-between items-center bg-purple-600 rounded-2xl p-4">
                     <div className="flex items-start gap-2 justify-start">
@@ -85,7 +85,8 @@ export default function LecturerHome(){
                             <div key={idx} 
                                 onClick={() => window.location.href = `/lecturer/uploadResult?courseCode=${course}`}
                                 className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
-                                {course}
+                                <p>{course}</p> 
+                                <button className='px-4 text-xs text-white py-2 rounded-xl bg-gradient-to-r from-purple-300 to-fuchsia-500'>Check Course</button>
                             </div>
                         ))}
                     </div>
