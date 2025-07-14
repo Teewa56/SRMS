@@ -110,7 +110,7 @@ export default function StudentHome(){
                 <div className="grid grid-cols-2 gap-2">
                     {studentProfile.registeredCourses.map((course, idx) => (
                         <div key={idx} 
-                            className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                            className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                             {course}
                         </div>
                     ))}
@@ -122,7 +122,7 @@ export default function StudentHome(){
                     <div className="grid grid-cols-2 gap-2">
                         {carryOverCourses.map((course, idx) => (
                             <div key={idx} 
-                                className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                                className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                                 {course}
                             </div>
                         ))}

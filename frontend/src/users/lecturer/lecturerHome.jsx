@@ -84,7 +84,7 @@ export default function LecturerHome(){
                         {courses.map((course, idx) => (
                             <div key={idx} 
                                 onClick={() => window.location.href = `/lecturer/uploadResult?courseCode=${course}`}
-                                className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                                className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                                 <p>{course}</p> 
                                 <button className='px-4 text-xs text-white py-2 rounded-xl bg-gradient-to-r from-purple-300 to-fuchsia-500'>Check Course</button>
                             </div>

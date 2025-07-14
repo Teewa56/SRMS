@@ -4,6 +4,7 @@ const Student = require('../models/studentModel');
 const Result = require('../models/resultModel');
 const bcrypt = require('bcrypt');
 const coursesData = require('../coursesInfo.json');
+const { sendNotification } = require('../services/emailServices')
 
 const getPoints = (score) => {
     if (score >= 70) return { point: 5 };
@@ -112,6 +113,7 @@ module.exports = {
                     student.semestersCompleted = newSemstersCompleted;
                     await student.save();
                 }
+                await sendNotification(student.schoolEmail, student.currentSemester, student.currentSession);
             }
             res.status(200).json({ message: 'Results released successfully', results });
         } catch (error) {

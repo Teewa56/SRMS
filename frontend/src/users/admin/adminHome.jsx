@@ -138,37 +138,37 @@ export function AdminHome() {
                 <div className="grid grid-cols-2 gap-2">
                     <div 
                         onClick={() => setShowConfirm(true)}
-                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                         <Book className="w-12 h-12 text-fuchsia-500" />
                         <h3>Release Results</h3>
                     </div>
                     <div 
                         onClick={() => window.location.href = '/admin/newStudent'}
-                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                         <PlusSquare className="w-12 h-12 text-fuchsia-500" />
                         <h3>New Student</h3>
                     </div>
                     <div 
                         onClick={() => window.location.href = '/admin/newLecturer'}
-                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                         <PlusSquare className="w-12 h-12 text-fuchsia-500" />
                         <h3>New Lecturer</h3>
                     </div>
                     <div
                         onClick={() => window.location.href = "/admin/resultPreview"} 
-                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                         <Check className="w-12 h-12 text-fuchsia-500" />
                         <h3>Result Preview</h3>
                     </div>
                     <div 
                         onClick={() => setShowUpdateConfirm(true)}
-                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                         <GitCompareArrows className="w-12 h-12 text-fuchsia-500" />
                         <h3>Update Semester</h3>
                     </div>
                     <div
                         onClick={() => window.location.href =  '/admin/profiles'} 
-                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-400 rounded-2xl p-4">
+                        className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                         <User2 className="w-12 h-12 text-fuchsia-500" />
                         <h3>Profiles</h3>
                     </div>
