@@ -4,7 +4,7 @@ const Student = require('../models/studentModel');
 const Result = require('../models/resultModel');
 const bcrypt = require('bcrypt');
 const coursesData = require('../coursesInfo.json');
-const { sendNotification } = require('../services/emailServices')
+const { generatePdf ,sendResult } = require('../services/emailServices')
 
 const getPoints = (score) => {
     if (score >= 70) return { point: 5 };
@@ -63,6 +63,32 @@ module.exports = {
             res.status(500).json({ message: 'Error creating admin account', error });
         }
     },
+    async deleteStudent(req, res){
+        try {
+            const { studentId } = req.params;
+            if(!studentId) return res.status(400).json({message: "Invalid student Id"})
+            const isExisting = await Student.findById(studentId);
+            if(!isExisting) return res.status(404).json({message : "Student does not exist"});
+            await Student.findByIdAndDelete(studentId);
+            res.status(200).json({message: "Succesfully deleted Student"})
+        } catch (error) {
+            console.error('Error deleting students account:', error);
+            res.status(500).json({ message: 'Error deleting students account', error });
+        }
+    },
+    async deleteLecturer(req, res){
+        try {
+            const { lecturerId } = req.params;
+            if(!lecturerId) return res.status(400).json({message: "Invalid lecturer Id"})
+            const isExisting = await Lecturer.findById(lecturerId);
+            if(!isExisting) return res.status(404).json({message : "lecturer does not exist"});
+            await Lecturer.findByIdAndDelete(lecturerId);
+            res.status(200).json({message: "Succesfully deleted lecturer"})
+        } catch (error) {
+            console.error('Error deleting lecturers account:', error);
+            res.status(500).json({ message: 'Error deleting lecturers account', error });
+        }
+    },
     async getProfile(req, res) {
         try {
             const admin = await Admin.findById(req.params.id);
@@ -113,7 +139,8 @@ module.exports = {
                     student.semestersCompleted = newSemstersCompleted;
                     await student.save();
                 }
-                await sendNotification(student.schoolEmail, student.currentSemester, student.currentSession);
+                const pdfPath = await generatePdf(student, studentResults);
+                await sendResult(student, pdfPath);
             }
             res.status(200).json({ message: 'Results released successfully', results });
         } catch (error) {

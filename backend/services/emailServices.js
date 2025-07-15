@@ -1,5 +1,9 @@
 const nodeMailer = require('nodemailer');
-require('dotenv').config();
+const pdf = require('html-pdf')
+const ejs = require('ejs')
+const path = require('path')
+require('dotenv').config()
+const template = require('../templates/resultTemplates')
 
 const transporter = nodeMailer.createTransport({
     service: 'gmail',
@@ -11,22 +15,59 @@ const transporter = nodeMailer.createTransport({
         pass: process.env.EMAIL_PASS
     }
 });
-const sendNotification = async (userEmail, semster, session) => {
+const pdfOptions = {
+    format: 'A4',
+    border: {
+        top: '1cm',
+        right: '1cm',
+        bottom: '1cm',
+        left: '1cm'
+    }
+};
+async function generatePdf(student, results) {
+    return new Promise((resolve, reject) => {
+        const studentData = {
+            matricNumber: student.matricNumber,
+            studentName: student.fullName,
+            semester: student.currentSemester,
+            academicYear: student.currentSession,
+            faculty: student.faculty,
+            department: student.department,
+            studentGpa: student.semesterGPA,
+            studentCgpa: student.cgpa,
+            results: results
+        };
+
+        ejs.render(template, studentData, (err, html) => {
+            if (err) return reject(err);
+
+            const pdfPath = path.join(__dirname, 'pdfs', `${student.matricNumber} _${student.currentSemester}_${student.currentLevel}_${Date.now()}.pdf`);
+            pdf.create(html, pdfOptions).toFile(pdfPath, (err, res) => {
+                if (err) return reject(err);
+                resolve(res.filename);
+            });
+        });
+    });
+};
+const sendResult = async (student, pdfPath) => {
     try {
         const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: userEmail,
-            subject: "Result Release",
+            from: `"Examination Office" <${process.env.EMAIL_USER}>`,
+            to: student.schoolEmail,
+            subject: `${student.currentSemester} Examination Results`,
             html: `
-                <div>
-                    <h2>Release of Results 🎉</h2>
-                    <p>
-                        Your results have been resleased for ${semster}, ${session} session, 
-                        login to your portal to check your results and reach out to any admins 
-                        if you have any issues with it
-                    </p>
-                </div>
-            `
+                <p>Dear ${student.fullName},</p>
+                <p>Your ${student.currentSemester} examination results have been released.</p>
+                <p>Please find attached your official result slip.</p>
+                <p>GPA: ${student.semesterGPA.toFixed(2)}<br>
+                CGPA: ${student.cgpa.toFixed(2)}</p>
+                <p>Regards,<br>Examination Office</p>
+            `,
+            attachments: [{
+                filename: `${student.fullName}_${student.currentSemester}_${student.currentLevel}.pdf`,
+                path: pdfPath,
+                contentType: 'application/pdf'
+            }]
         };
         await transporter.sendMail(mailOptions);
     } catch (error) {
@@ -34,4 +75,4 @@ const sendNotification = async (userEmail, semster, session) => {
     }
 };
 
-module.exports = { sendNotification };
+module.exports = { generatePdf ,sendResult };

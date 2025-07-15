@@ -12,7 +12,9 @@ const {
     previewResult,
     registerCoursesForSemester,
     updateStudentSemesterLevel,
-    getCurrentSemester
+    getCurrentSemester,
+    deleteLecturer,
+    deleteStudent
 } = require('../controllers/adminController');
 
 // Admin routes
@@ -24,10 +26,12 @@ router.get('/admins/profile/:id', getProfile);
 // Lecturer routes
 router.get('/lecturers', getAllLecturers);
 router.post('/lecturers/create', newLecturer);
+router.delete('/lecturers/delete/:lecturerId', deleteLecturer);
 
 // Student routes
 router.get('/students', getAllStudents);
 router.post('/students/create', newStudent);
+router.delete('/students/delete/:studentId', deleteStudent);
 
 // Results and courses
 router.post('/results/release', releaseResults);

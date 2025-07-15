@@ -24,7 +24,7 @@ import './App.css';
 const App = () => {
   const { isAuth } = useContext(AuthContext);
   const userType = localStorage.getItem('userType');
-
+  const userId = localStorage.getItem('userId');
   function StudentRoutes({ children }) {
     if (userType !== 'student') {
       return <Navigate to={`/${userType}`} replace />;
@@ -49,15 +49,21 @@ const App = () => {
   if(!navigator.onLine) {
     return (
       <div className="flex items-center justify-center w-full h-screen">
-        <div>
+        <div className='flex flex-col items-center gap-2'>
           <img 
             src="/images/error.svg" 
             alt="Error image" 
             className='w-10 h-10'/>
-          <h1 className="text-2xl font-bold">You are offline, kindly connect to the internet</h1>
+          <h1 className="text-2xl font-bold">You are offline</h1>
         </div>
       </div>
     );
+  }
+
+  if(!userType || !userId){
+    return(
+      <Landing />
+    )
   }
 
   return (

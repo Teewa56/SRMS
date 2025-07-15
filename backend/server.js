@@ -4,6 +4,8 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const fs = require('fs')
+const path = require('path')
 
 const studentRoutes = require('./routes/studentRoutes');
 const lecturerRoutes = require('./routes/lecturerRoutes');
@@ -28,6 +30,11 @@ app.set('trust proxy', 1);
 app.get('/', (req, res) => {
     res.send('Server is running successfully');
 });
+
+const pdfsDir = path.join(__dirname, 'pdfs');
+if (!fs.existsSync(pdfsDir)) {
+  fs.mkdirSync(pdfsDir);
+}
 
 const server = http.createServer(app);
 const port = process.env.PORT;

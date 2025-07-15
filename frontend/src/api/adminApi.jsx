@@ -18,9 +18,11 @@ export const getAdminProfile = (id) => adminApi.get(`/admins/profile/${id}`);
 
 export const getAllLecturers = () => adminApi.get('/lecturers');
 export const createLecturer = (data) => adminApi.post('/lecturers/create', data);
+export const deleteLecturer = (lecturerId) => adminApi.delete(`/lecturers/delete/${lecturerId}`);
 
 export const getAllStudents = () => adminApi.get('/students');
 export const createStudent = (data) => adminApi.post('/students/create', data);
+export const deleteStudent = (studentId) => adminApi.delete(`/students/delete/${studentId}`);
 
 export const releaseResults = () => adminApi.post('/results/release');
 export const previewResult = (data) => adminApi.post('/results/preview',  data );
