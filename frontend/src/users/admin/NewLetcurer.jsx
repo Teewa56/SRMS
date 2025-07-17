@@ -116,13 +116,13 @@ export default function NewLecturer() {
         <div className="flex items-center justify-center min-h-screen">
             {error && <Toast text={error} /> }
             <div className="max-w-md w-full shadow-2xl rounded-3xl p-4">
-                <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">Register New Lecturer</h2>
-                {loading && <div className="text-center font-bold text-blue-600 mb-2">Loading...</div>}
+                <h2 className="text-xl font-bold text-center text-green-500 mb-8">Register New Lecturer</h2>
+                {loading && <div className="text-center font-bold text-green-600 mb-2">Loading...</div>}
                 <form className="space-y-5" onSubmit={handleSubmit}>
                     {/* Profile Picture Upload */}
                     <div className="flex flex-col items-center mb-4">
                         <div
-                            className="relative w-28 h-28 rounded-full bg-purple-200 flex items-center justify-center cursor-pointer border-4 border-blue-400 hover:border-blue-600 transition"
+                            className="relative w-28 h-28 rounded-full bg-green-400 flex items-center justify-center cursor-pointer border-4 border-green-400 hover:border-green-600 transition"
                             onClick={() => fileInputRef.current.click()}
                         >
                             {preview ? (
@@ -132,7 +132,7 @@ export default function NewLecturer() {
                                     className="w-full h-full object-cover rounded-full"
                                 />
                             ) : (
-                                <Plus className="text-5xl text-blue-400 font-bold" />
+                                <Plus className="text-5xl text-white font-bold" />
                             )}
                             <input
                                 type="file"
@@ -142,7 +142,7 @@ export default function NewLecturer() {
                                 className="hidden"
                             />
                         </div>
-                        <span className="text-xs text-blue-500 mt-2">Upload Profile Picture</span>
+                        <span className="text-xs text-green-500 mt-2">Upload Profile Picture</span>
                     </div>
                     <div className="flex flex-col space-y-4">
                         <input
@@ -150,7 +150,7 @@ export default function NewLecturer() {
                             placeholder="Full Name"
                             value={lecturerInfo.fullName}
                             onChange={e => updateLecturerInfo('fullName', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                         />
                         <input
@@ -158,15 +158,15 @@ export default function NewLecturer() {
                             placeholder="Work Email"
                             value={lecturerInfo.workEmail}
                             onChange={e => updateLecturerInfo('workEmail', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                         />
                         <input
                             type="text"
-                            placeholder="Work ID"
+                            placeholder="Work ID SENS/2983"
                             value={lecturerInfo.workId}
                             onChange={e => updateLecturerInfo('workId', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                         />
                         <input
@@ -174,12 +174,12 @@ export default function NewLecturer() {
                             placeholder="Phone Number"
                             value={lecturerInfo.phone}
                             onChange={e => updateLecturerInfo('phone', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                         />
                         <select
                             value={lecturerInfo.faculty}
                             onChange={e => updateLecturerInfo('faculty', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                         >
                             <option value="">Select Faculty</option>
@@ -190,7 +190,7 @@ export default function NewLecturer() {
                         <select
                             value={lecturerInfo.department}
                             onChange={e => updateLecturerInfo('department', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-100 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                             disabled={!lecturerInfo.faculty}
                         >
@@ -203,17 +203,17 @@ export default function NewLecturer() {
                     {/* Courses Taking */}
                     {lecturerInfo.department && (
                         <div className="mt-6">
-                            <label className="block text-blue-700 font-semibold mb-2">Select Courses to Assign:</label>
-                            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto bg-purple-50 p-3 rounded-lg border border-blue-200">
+                            <label className="block text-green-700 font-semibold mb-2">Select Courses to Assign:</label>
+                            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto bg-gray-30 p-3 rounded-lg border border-green-200">
                                 {availableCourses.map((course, idx) => (
                                     <label key={idx} className="flex items-center space-x-2 cursor-pointer">
                                         <input
                                             type="checkbox"
                                             checked={lecturerInfo.coursesTaking.includes(course)}
                                             onChange={() => handleCourseToggle(course)}
-                                            className="accent-blue-500"
+                                            className="accent-green-500"
                                         />
-                                        <span className="text-blue-700">{course}</span>
+                                        <span className="text-green-700">{course}</span>
                                     </label>
                                 ))}
                             </div>
@@ -221,7 +221,7 @@ export default function NewLecturer() {
                     )}
                     <button
                         type="submit"
-                        className="w-full mt-6 py-2 rounded-lg bg-purple-500 text-white font-semibold text-lg hover:bg-purple-600 transition"
+                        className="w-full py-2 rounded-lg bg-green-500 text-white font-semibold text-lg hover:bg-green-600 transition"
                         disabled={loading}
                     >
                         Register Lecturer

@@ -4,7 +4,7 @@ import {
     uploadCourseResult,
     getCourseResult
 } from '../../api/lecturerApi'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link} from 'react-router-dom'
 import Toast from '../../components/Toast'
 import Loading from '../../components/Loaidng'
 import handleApiError from '../../apiErrorHandler'
@@ -22,20 +22,20 @@ function calculateGrade(total) {
 function ConfirmResultUpload({ onConfirm, onDiscard }) {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-30 z-50 p-4">
-            <div className="bg-purple-500 rounded-2xl shadow-lg p-4 flex flex-col items-center gap-4 min-w-[200px]">
-                <p className="text-lg font-semibold text-purple-700 mb-4">
-                    Do you want to Upload the result? Uploaded scores can't be changed.
+            <div className="bg-green-400 rounded-2xl shadow-lg p-4 flex flex-col items-center gap-4 min-w-[200px]">
+                <p className="text-lg font-semibold text-white mb-4">
+                    Do you want to Upload this result?
                 </p>
                 <div className="flex gap-4">
                     <button
                         onClick={onConfirm}
-                        className="px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-600 transition"
+                        className="px-6 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition"
                     >
                         Yes
                     </button>
                     <button
                         onClick={onDiscard}
-                        className="px-6 py-2 rounded-lg bg-gray-300 text-purple-700 font-semibold hover:bg-gray-400 transition"
+                        className="px-6 py-2 rounded-lg bg-gray-300 text-green-500 font-semibold hover:bg-gray-400 transition"
                     >
                         No
                     </button>
@@ -116,10 +116,12 @@ export default function UploadResult() {
         }
     }
 
+    if(loading) return <Loading />
+
     return (
         <div className="h-screen">
             <div className="max-w-2xl mx-auto flex flex-col gap-4 p-4">
-                <h2 className="text-xl font-bold text-purple-800 mb-2">Upload Results for {courseCode}</h2>
+                <h2 className="text-xl font-bold text-green-500 mb-2">Upload Results for {courseCode}</h2>
                 {loading && <Loading />}
                 {error && <Toast text={error} color="red" />}
                 {success && <Toast text={success} color="green" />}
@@ -131,20 +133,20 @@ export default function UploadResult() {
                 )}
                 {students.length === 0 && !loading ? (
                     <div className="flex flex-col items-center justify-center mt-10">
-                        <EclipseIcon className="w-16 h-16 text-purple-500 mb-2" />
-                        <p className="text-purple-700">No students found for this course.</p>
+                        <EclipseIcon className="w-16 h-16 text-green-500 mb-2" />
+                        <p className="text-green-600">No students found for this course.</p>
                     </div>
                 ) : (
                     <form onSubmit={e => { e.preventDefault(); setShowConfirm(true); }}>
                         <div className="overflow-x-auto">
-                            <table className="table-auto w-full border-collapse border border-purple-400 bg-white">
+                            <table className="table-auto w-full border-collapse border border-green-400 bg-white">
                                 <thead>
-                                    <tr className="bg-purple-200">
-                                        <th className="border border-purple-400 px-2 py-1">Full Name</th>
-                                        <th className="border border-purple-400 px-2 py-1">Matric No</th>
-                                        <th className="border border-purple-400 px-2 py-1">Test Score(40)</th>
-                                        <th className="border border-purple-400 px-2 py-1">Exam Score(60)</th>
-                                        <th className="border border-purple-400 px-2 py-1">Grade</th>
+                                    <tr className="bg-green-200">
+                                        <th className="border border-green-400 px-2 py-1">Full Name</th>
+                                        <th className="border border-green-400 px-2 py-1">Matric No</th>
+                                        <th className="border border-green-400 px-2 py-1">Test Score(40)</th>
+                                        <th className="border border-green-400 px-2 py-1">Exam Score(60)</th>
+                                        <th className="border border-green-400 px-2 py-1">Grade</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -190,13 +192,18 @@ export default function UploadResult() {
                         </div>
                         <div className="flex gap-4 mt-4">
                             {results[0]?.isUploaded ? (
-                                <div className='px-5 py-2 rounded-xl bg-purple-800 text-purple-400'>
-                                    <p>Result has been uploaded successfully</p>
-                                </div>
+                                <Link
+                                    to={`/lecturer/editResult/${courseCode}`}
+                                    type="submit"
+                                    className="px-6 py-2 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 transition"
+                                    disabled={loading}
+                                >
+                                    Edit Results
+                                </Link>
                             ) : (
                                 <button
                                     type="submit"
-                                    className="px-6 py-2 rounded-lg bg-purple-500 text-white font-semibold hover:bg-purple-600 transition"
+                                    className="px-6 py-2 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 transition"
                                     disabled={loading}
                                 >
                                     Upload Results
@@ -207,29 +214,29 @@ export default function UploadResult() {
                 )}
                 {results.length > 0 && results[0]?.isUploaded && (
                 <>
-                    <div className="mb-4 bg-purple-100 rounded-xl p-4 overflow-x-auto print-section">
-                        <h3 className="font-bold text-purple-800 mb-2">Uploaded Results for {courseCode}</h3>
+                    <div className="mb-4 bg-green-100 rounded-xl p-4 overflow-x-auto print-section">
+                        <h3 className="font-bold text-green-800 mb-2">Uploaded Results for {courseCode}</h3>
                         <p>Level: {results[0].student.currentLevel}</p>
                         <p>Session: {results[0].student.currentSession}</p>
                         <p>Semester: {results[0].student.currentSemester}</p>
-                        <table className="table-auto w-full border-collapse border border-purple-400 bg-white">
+                        <table className="table-auto w-full border-collapse border border-green-400 bg-white">
                             <thead>
-                                <tr className="bg-purple-200">
-                                    <th className="border border-purple-400 px-2 py-1">Full Name</th>
-                                    <th className="border border-purple-400 px-2 py-1">Matric No</th>
-                                    <th className="border border-purple-400 px-2 py-1">Test Score</th>
-                                    <th className="border border-purple-400 px-2 py-1">Exam Score</th>
-                                    <th className="border border-purple-400 px-2 py-1">Grade</th>
+                                <tr className="bg-green-200">
+                                    <th className="border border-green-400 px-2 py-1">Full Name</th>
+                                    <th className="border border-green-400 px-2 py-1">Matric No</th>
+                                    <th className="border border-green-400 px-2 py-1">Test Score</th>
+                                    <th className="border border-green-400 px-2 py-1">Exam Score</th>
+                                    <th className="border border-green-400 px-2 py-1">Grade</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {results.map(result => (
                                     <tr key={result._id}>
-                                        <td className="border border-purple-400 px-2 py-1">{result.student?.fullName}</td>
-                                        <td className="border border-purple-400 px-2 py-1">{result.student?.matricNumber}</td>
-                                        <td className="border border-purple-400 px-2 py-1">{result.testScore}</td>
-                                        <td className="border border-purple-400 px-2 py-1">{result.examScore}</td>
-                                        <td className="border border-purple-400 px-2 py-1">{result.grade}</td>
+                                        <td className="border border-green-400 px-2 py-1">{result.student?.fullName}</td>
+                                        <td className="border border-green-400 px-2 py-1">{result.student?.matricNumber}</td>
+                                        <td className="border border-green-400 px-2 py-1">{result.testScore}</td>
+                                        <td className="border border-green-400 px-2 py-1">{result.examScore}</td>
+                                        <td className="border border-green-400 px-2 py-1">{result.grade}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -244,7 +251,7 @@ export default function UploadResult() {
                             document.body.innerHTML = originalContents;
                             window.location.reload();
                         }}
-                        className="px-4 py-2 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition print:hidden"
+                        className="px-4 py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition print:hidden"
                     >
                         Print Results
                     </button>

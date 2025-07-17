@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const liveUrl = import.meta.env.VITE_DEPLOYED_BACKEND_URL
-//const localUrl = import.meta.env.VITE_BACKEND_LOCAL_URL;
+//const liveUrl = import.meta.env.VITE_DEPLOYED_BACKEND_URL
+const localUrl = import.meta.env.VITE_BACKEND_LOCAL_URL;
 
-const baseUrl = `${liveUrl}/student`;
+const baseUrl = `${localUrl}/student`;
 
 const studentApi = axios.create({
     baseURL: baseUrl,
@@ -15,7 +15,7 @@ export const studentSignIn = (data) => studentApi.post('/signin', data);
 export const getStudentProfile = (studentId) => studentApi.get(`/profile/${studentId}`);
 
 export const getAllResults = (studentId) => studentApi.get(`/results/${studentId}`);
-export const getResult = (resultId) => studentApi.get(`/results/${resultId}`);
+export const getResult = (studentId, data) => studentApi.get(`/results/${studentId}`, data);
 
 export const getGPA = (studentId) => studentApi.get(`/gpa/${studentId}`);
 export const getCarryOverCourses = (studentId) => studentApi.get(`/carry-over-courses/${studentId}`);

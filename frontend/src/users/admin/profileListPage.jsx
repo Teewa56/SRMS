@@ -1,9 +1,9 @@
-import { getAllAdmins, getAllStudents, getAllLecturers, deleteLecturer, deleteStudent } from "../../api/adminApi";
+import { getAllAdmins, getAllStudents, deleteAdmin, getAllLecturers, deleteLecturer, deleteStudent } from "../../api/adminApi";
 import { useEffect, useState } from "react";
 import Loading from '../../components/Loaidng';
 import handleApiError from "../../apiErrorHandler";
 import Toast from '../../components/Toast'
-import {User} from 'lucide-react'
+import {User, Trash, Edit3Icon} from 'lucide-react'
 
 const tabs = [
     { key: "admins", label: "Admins" },
@@ -16,6 +16,7 @@ export default function ProfileListPage() {
     const [loading, setLoading] = useState(false);
     const [profiles, setProfiles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
+    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
         async function fetchProfiles() {
@@ -48,7 +49,7 @@ export default function ProfileListPage() {
             }else if(activeTab === "lecturers"){
                 await deleteLecturer(userId);
             }else{
-                return;
+                await deleteAdmin(userId);
             }
             window.location.reload();
         } catch (error) {
@@ -60,7 +61,7 @@ export default function ProfileListPage() {
         <div className="max-w-md mx-auto p-4 rounded-xl">
             {errorMessage && <Toast text={errorMessage} />}
             <h3 className="text-2xl font-bold mb-6">Profiles</h3>
-            <nav className="flex border-b border-purple-300 mb-6">
+            <nav className="flex border-b border-green-300 mb-6">
                 {tabs.map(tab => (
                     <button
                         key={tab.key}
@@ -72,7 +73,7 @@ export default function ProfileListPage() {
                     >
                         {tab.label}
                         {activeTab === tab.key && (
-                            <span className="absolute left-0 right-0 -bottom-1 h-1 bg-purple-500 rounded transition-all duration-300"></span>
+                            <span className="absolute left-0 right-0 -bottom-1 h-1 bg-green-500 rounded transition-all duration-300"></span>
                         )}
                     </button>
                 ))}
@@ -82,45 +83,55 @@ export default function ProfileListPage() {
             ) : (
                 <div>
                     {profiles.length === 0 ? (
-                        <div className="text-center text-purple-300 py-10">No {activeTab} found.</div>
+                        <div className="text-center text-green-300 py-10">No {activeTab} found.</div>
                     ) : (
-                        <ul className="divide-y divide-purple-100">
+                        <ul className="divide-y divide-green-100">
                             {profiles.map((profile, idx) => (
-                                <li key={profile._id || idx} className="py-4 flex items-center justify-between">
-                                    <div className="flex items-center justify-start gap-2">
+                                <li key={profile._id || idx} className="flex items-center justify-between">
+                                    <div className="flex items-start justify-start gap-2 w-2/3">
                                         {profile.profilePic ? (
                                             <img
                                                 src={profile.profilePic}
                                                 alt="profile"
-                                                className="w-12 h-12 rounded-full object-cover border border-blue-200"
+                                                className="w-1/4 h-15 rounded-xl object-cover border border-green-200"
                                             />
                                         ) : (
                                             <User size={40} />
                                         )}
-                                        <div>
+                                        <div className="w-3/4">
                                             <div className="font-semibold text-black-700">{profile.fullName}</div>
                                             <div className="text-sm text-black-400">{profile.workEmail || profile.schoolEmail || profile.email}</div>
                                             {activeTab === "students" && (
                                                 <div className="text-xs text-black">
                                                     <p>Matric No: {profile.matricNumber}</p>
-                                                    <p>{profile.currentLevel}</p>
                                                 </div>
                                             )}
                                             {activeTab === "lecturers" && (
                                                 <div className="text-xs text-black">Dept: {profile.department}</div>
                                             )}
-                                            <div className="text-sm text-black">
-                                                <p>{profile.phone}</p>
-                                                <p>{profile.adminId}</p>
-                                            </div>
                                         </div>
                                     </div>
-                                    {activeTab !== "admins" && 
+                                    <div className="w-1/3 flex items-center justify-end">
+                                    {userId !== profile._id &&
                                     <button 
-                                        onClick={handleDelete(profile._id)}
-                                        className="text-xs px-4 py-2 rounded-xl bg-fuchsia-400 text-white">
-                                        <p>Delete Profile</p>
+                                        onClick={() => handleDelete(profile._id)}
+                                        className="text-xs p-2 rounded-xl bg-red-400 text-white cursor-pointer">
+                                        <Trash size={20} />
                                     </button>}
+                                    <button
+                                        onClick={() => {
+                                            if(activeTab === 'admins'){
+                                                window.location.href = `/admin/editAdmin?adminId=${profile._id}`
+                                            }else if(activeTab === 'lecturers'){
+                                                window.location.href = `/admin/editLecturer?lecturerId=${profile._id}`
+                                            }else{
+                                                window.location.href = `/admin/editStudent?studentId=${profile._id}`
+                                            }
+                                        }}
+                                        className="text-xs ml-2 p-2 rounded-xl cursor-pointer bg-green-400 text-white">
+                                        <Edit3Icon size={20} />
+                                    </button>
+                                    </div>
                                 </li>
                             ))}
                         </ul>

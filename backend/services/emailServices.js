@@ -25,30 +25,37 @@ const pdfOptions = {
     }
 };
 async function generatePdf(student, results) {
-    return new Promise((resolve, reject) => {
-        const studentData = {
-            matricNumber: student.matricNumber,
-            studentName: student.fullName,
-            semester: student.currentSemester,
-            academicYear: student.currentSession,
-            faculty: student.faculty,
-            department: student.department,
-            studentGpa: student.semesterGPA,
-            studentCgpa: student.cgpa,
-            results: results
-        };
+    const studentData = {
+        matricNumber: student.matricNumber,
+        studentName: student.fullName,
+        semester: student.currentSemester,
+        academicYear: student.currentSession,
+        faculty: student.faculty,
+        department: student.department,
+        studentGpa: student.semesterGPA,
+        studentCgpa: student.cgpa,
+        results: results
+    };
 
-        ejs.render(template, studentData, (err, html) => {
-            if (err) return reject(err);
+    try {
+        const html = await ejs.render(template, studentData);
 
-            const pdfPath = path.join(__dirname, 'pdfs', `${student.matricNumber} _${student.currentSemester}_${student.currentLevel}_${Date.now()}.pdf`);
+        const pdfDir = path.join(__dirname, 'pdfs');
+        const pdfPath = path.join(pdfDir, `${student.matricNumber}_${student.currentSemester}_${student.currentLevel}_${Date.now()}.pdf`);
+
+        return await new Promise((resolve, reject) => {
             pdf.create(html, pdfOptions).toFile(pdfPath, (err, res) => {
-                if (err) return reject(err);
+                if (err) {
+                    console.error("PDF creation error:", err);
+                    return reject(err);
+                }
                 resolve(res.filename);
             });
         });
-    });
-};
+    } catch (err) {
+        console.error("generatePdf error:", err);
+    }
+}
 const sendResult = async (student, pdfPath) => {
     try {
         const mailOptions = {
@@ -75,4 +82,4 @@ const sendResult = async (student, pdfPath) => {
     }
 };
 
-module.exports = { generatePdf ,sendResult };
+module.exports = { generatePdf, sendResult };

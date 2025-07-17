@@ -12,9 +12,13 @@ import NewStudent from './users/admin/NewStudent';
 import NewLecturer from './users/admin/NewLetcurer';
 import ProfileListPage from './users/admin/profileListPage';
 import PreviewResult from './users/admin/ResultPreview';
+import EditAdmin from './users/admin/EditAdmin';
+import EditStudent from './users/admin/EditStudent'
+import EditLecturer from './users/admin/EditLecturer'
 //Lecturer Routes
 import LecturerHome from './users/lecturer/lecturerHome';
 import UploadResult from './users/lecturer/UploadResuslt';
+import EditResult from './users/lecturer/editResults'
 //StudentRoutes
 import StudentHome from './users/student/studentHome';
 import Results from './users/student/resultsPage';
@@ -60,12 +64,6 @@ const App = () => {
     );
   }
 
-  if(!userType || !userId){
-    return(
-      <Landing />
-    )
-  }
-
   return (
     <BrowserRouter>
       <ErrorBoundary>          
@@ -79,10 +77,14 @@ const App = () => {
           <Route path="/admin/newLecturer" element={<AdminRoutes><NewLecturer /></AdminRoutes>} />
           <Route path="/admin/profiles" element={<AdminRoutes><ProfileListPage /></AdminRoutes>} />
           <Route path='/admin/resultPreview' element={<AdminRoutes><PreviewResult /></AdminRoutes>} />
+          <Route path='/admin/editAdmin' element={<AdminRoutes><EditAdmin /></AdminRoutes>} />
+          <Route path='/admin/editLecturer' element={<AdminRoutes><EditLecturer /></AdminRoutes>} />
+          <Route path='/admin/editStudent' element={<AdminRoutes><EditStudent /></AdminRoutes>} />
 
           <Route path='/lecturer' element={<LecturerRoutes><LecturerHome /></LecturerRoutes>} />
           <Route path='/lecturer/uploadResult' element={<LecturerRoutes><UploadResult /></LecturerRoutes>} />
-
+          <Route path='/lecturer/editResult/:CourseCode' element={<LecturerRoutes><EditResult /></LecturerRoutes>} />
+          
           <Route path='/student' element={<StudentRoutes><StudentHome /></StudentRoutes>} />
           <Route path='/student/results' element={<StudentRoutes><Results /></StudentRoutes>} />
           <Route path='/student/result/:studentId' element={<StudentRoutes><Result /></StudentRoutes>} />

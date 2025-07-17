@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getResult, getGPA, getStudentProfile } from "../../api/studentApi";
+import { getResult, getStudentProfile } from "../../api/studentApi";
 import Loading from '../../components/Loaidng';
 import Toast from '../../components/Toast';
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
@@ -12,26 +12,26 @@ export default function Result() {
     const semester = searchParams.get("semester");
     const payload = useMemo(() => ({ level, semester }), [level, semester]);
     const [result, setResult] = useState([]);
-    const [gpa, setGpa] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [cGPA, setCGPA] = useState(null);
     const [student, setStudent] = useState({});
     const navigate = useNavigate();
     const printRef = useRef();
     
-
     useEffect(() => {
         async function fetchResult() {
             setLoading(true);
             try {
                 const res = await getResult(studentId, {data: payload});
-                setResult(res.data.semesterResults[0]?.courses || []);
-                const gpaRes = await getGPA(studentId);
+                const semesterMatch = res.data.semesterResults.find(
+                    sem => sem.semester === payload.semester
+                );
+                const levelCourses = semesterMatch
+                    ? semesterMatch.courses.filter(course => course.level === payload.level)
+                    : [];
+                setResult(levelCourses)
                 const studentRes = await getStudentProfile(studentId);
                 setStudent(studentRes.data);
-                setGpa(gpaRes.data.gpData.gpa);
-                setCGPA(gpaRes.data.gpData.cgpa);
             } catch (err) {
                 handleApiError(err, setError, "An unexpected error occurred");
             } finally {
@@ -60,9 +60,9 @@ export default function Result() {
                     <h2 className="text-xl font-semibold mb-2">{`${payload.level} ${payload.semester} Result`}</h2>
                     <div className="mb-4 space-y-2">
                         <div><span className="font-bold">Full Name:</span> {student.fullName}</div>
-                        <div><span className="font-bold">Matric Number:</span> {student.matricNo}</div>
-                        <div><span className="font-bold">Semester:</span> {result[0].semester}</div>
-                        <div><span className="font-bold">Level:</span> {result[0].level}</div>
+                        <div><span className="font-bold">Matric Number:</span> {student.matricNumber}</div>
+                        <div><span className="font-bold">Semester:</span> {payload.semester}</div>
+                        <div><span className="font-bold">Level:</span> {payload.level}</div>
                         <div><span className="font-bold">Department:</span> {student.department}</div>
                     </div>
 
@@ -89,17 +89,10 @@ export default function Result() {
                 </div>
             )}
 
-            {gpa !== null && (
-                <div className="mt-4 p-4 border rounded-xl flex items-center justify-between text-sm">
-                    <strong>GPA: {gpa.toFixed(2)}</strong>
-                    <strong>CGPA: {cGPA}</strong>
-                </div>
-            )}
-
             {result.length > 0 &&  
             <div className="mt-4 print:hidden">
                 <button
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded w-full"
+                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full"
                     onClick={() => window.print()}
                 >
                     Print Result

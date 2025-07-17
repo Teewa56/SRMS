@@ -14,24 +14,32 @@ const {
     updateStudentSemesterLevel,
     getCurrentSemester,
     deleteLecturer,
-    deleteStudent
+    deleteStudent,
+    deleteAdmin,
+    editStudent,
+    editLecturer,
+    editAdmin,
 } = require('../controllers/adminController');
 
 // Admin routes
 router.get('/admins', getAllAdmins);
 router.post('/admins/signin', signIn);
 router.post('/admins/create', createAccount);
-router.get('/admins/profile/:id', getProfile);
+router.get('/admins/profile/:adminId', getProfile);
+router.delete('/admins/delete/:adminId', deleteAdmin);
+router.put('/admins/edit/:adminId', editAdmin);
 
 // Lecturer routes
 router.get('/lecturers', getAllLecturers);
 router.post('/lecturers/create', newLecturer);
 router.delete('/lecturers/delete/:lecturerId', deleteLecturer);
+router.put('/lecturers/edit/:lecturerId', editLecturer);
 
 // Student routes
 router.get('/students', getAllStudents);
 router.post('/students/create', newStudent);
 router.delete('/students/delete/:studentId', deleteStudent);
+router.put('/students/edit/:studentId', editStudent);
 
 // Results and courses
 router.post('/results/release', releaseResults);

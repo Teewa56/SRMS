@@ -5,7 +5,8 @@ const {
     getCoursesTaking, 
     getCourseStudents, 
     uploadCourseResult,
-    getCourseResult 
+    getCourseResult,
+    editResult
 } = require('../controllers/lecturerController');
 
 router.post('/signin', signIn);
@@ -14,5 +15,6 @@ router.get('/:lecturerId/courses-taking', getCoursesTaking);
 router.get('/course/:courseCode/students', getCourseStudents);
 router.post('/:lecturerId/upload-result', uploadCourseResult);
 router.get('/:lecturerId/course-result', getCourseResult);
+router.put('/result/edit/:lecturerId', editResult);
 
 module.exports = router;

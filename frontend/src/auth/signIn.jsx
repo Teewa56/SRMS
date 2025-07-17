@@ -90,7 +90,7 @@ export default function SignIn() {
                     <button
                         disabled={loading || !userInfo.email || !userInfo.password }
                         type="submit"
-                        className={`w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 
+                        className={`w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 
                             ${loading || !userInfo.email || !userInfo.password ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                         Sign In
@@ -98,7 +98,7 @@ export default function SignIn() {
                 </form>
                 {userType === 'admin' &&
                 <Link to='/newAdmin'>
-                    <p className="py-2 text-fuchsia-500 underline decoration-2 fuchsia-amber-200">CreateAccount</p>
+                    <p className="py-2 text-green-500 underline decoration-2 fuchsia-amber-200">CreateAccount</p>
                 </Link>}
             </div>
         </div>

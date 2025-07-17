@@ -84,14 +84,14 @@ export default function CreateAccount() {
         <div className="h-screen p-4 w-full flex items-center justify-center ">
             {loading && <Loading />}
             {error && <Toast text={error} color="red" />}
-            <div className="max-w-md w-full shadow-lg bg-white rounded-2xl p-6 bg-opacity-90">
+            <div className="max-w-md w-full shadow-lg bg-white rounded-2xl bg-opacity-90">
                 <h3 className="text-2xl font-semibold text-center mb-6">
                     Create Account
                 </h3>
                 <form onSubmit={createUser} className="space-y-4">
                     <div className="flex flex-col items-center mb-4">
                         <div
-                            className="relative w-24 h-24 rounded-full bg-purple-500 flex items-center justify-center cursor-pointer border-2 border-blue-400 hover:border-blue-600 transition"
+                            className="relative w-24 h-24 rounded-full bg-green-500 flex items-center justify-center cursor-pointer"
                             onClick={() => fileInputRef.current.click()}
                         >
                             {preview ? (
@@ -101,7 +101,7 @@ export default function CreateAccount() {
                                     className="w-full h-full object-cover rounded-full"
                                 />
                             ) : (
-                                <Plus className="text-4xl text-blue-400 font-bold" />
+                                <Plus className="text-4xl text-white font-bold" />
                             )}
                             <input
                                 type="file"
@@ -111,7 +111,7 @@ export default function CreateAccount() {
                                 className="hidden"
                             />
                         </div>
-                        <span className="text-xs text-blue-500 mt-2">Upload Profile Picture</span>
+                        <span className="text-xs text-green-500 mt-2">Upload Profile Picture</span>
                     </div>
                     <div className="flex flex-col space-y-3">
                         <input
@@ -119,7 +119,7 @@ export default function CreateAccount() {
                             placeholder="Full Name"
                             value={userInfo.fullName}
                             onChange={e => updateUserInfo('fullName', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                         />
                         <input
@@ -127,7 +127,7 @@ export default function CreateAccount() {
                             placeholder="Work Email"
                             value={userInfo.workEmail}
                             onChange={e => updateUserInfo('workEmail', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                         />
                         <input
@@ -135,27 +135,29 @@ export default function CreateAccount() {
                             placeholder="Password"
                             value={userInfo.password}
                             onChange={e => updateUserInfo('password', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                             required
                         />
                         <input
                             type="text"
                             placeholder="Phone Number"
                             value={userInfo.phone}
+                            required
                             onChange={e => updateUserInfo('phone', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                         />
                         <input
                             type="text"
                             placeholder="Admin ID"
                             value={userInfo.adminId}
+                            required
                             onChange={e => updateUserInfo('adminId', e.target.value)}
-                            className="rounded-lg px-4 py-2 bg-purple-300 border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                            className="rounded-lg px-4 py-2 bg-gray-300 border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full mt-4 py-2 rounded-lg bg-purple-500 text-white font-semibold hover:bg-purple-600 transition"
+                        className="w-full mt-4 py-2 rounded-lg bg-green-500 text-white font-semibold hover:bg-green-600 transition"
                     >
                         Create Account
                     </button>

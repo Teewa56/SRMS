@@ -11,7 +11,7 @@ const {
 router.post('/signin', signIn);
 router.get('/results/:studentId', getAllResults);
 router.get('/profile/:studentId', getProfile);
-router.get('/results/:resultId', getResult);
+router.get('/results/:studentId', getResult);
 router.get('/gpa/:studentId', getGPA);
 router.get('/carry-over-courses/:studentId', carryOverCourses);
 

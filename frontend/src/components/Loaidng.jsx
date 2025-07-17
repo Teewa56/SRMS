@@ -14,7 +14,7 @@ const Loading = () => {
                 }}
             >
                 <motion.div
-                    className="w-4 h-4 bg-purple-500 rounded-full"
+                    className="w-4 h-4 bg-green-500 rounded-full"
                     animate={{
                         y: [0, -10, 0],
                     }}
@@ -26,7 +26,7 @@ const Loading = () => {
                     }}
                 />
                 <motion.div
-                    className="w-4 h-4 bg-purple-500 rounded-full"
+                    className="w-4 h-4 bg-green-500 rounded-full"
                     animate={{
                         y: [0, -10, 0],
                     }}
@@ -38,7 +38,7 @@ const Loading = () => {
                     }}
                 />
                 <motion.div
-                    className="w-4 h-4 bg-purple-500 rounded-full"
+                    className="w-4 h-4 bg-green-500 rounded-full"
                     animate={{
                         y: [0, -10, 0],
                     }}

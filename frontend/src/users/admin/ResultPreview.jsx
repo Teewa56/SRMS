@@ -64,13 +64,13 @@ export default function PreviewResult() {
     }
 
     return (
-        <div className="h-screen p-2">
-            <div className='shadow-md p-2 mx-auto max-w-2xl'>
+        <div className="h-screen p-4">
+            <div className='mx-auto max-w-2xl'>
             <h3 className='font-bold text-2xl'>Preview Result</h3>
             <div className="py-2">
                 <label><p>Semester</p></label>
                 <select
-                    className='border-2 rounded-2xl bg-purple-200 p-2'
+                    className='border-2 rounded-2xl bg-green-400 p-2 border-green-400'
                     value={resultData.semester}
                     onChange={e => setResultData(prev => ({ ...prev, semester: e.target.value }))}
                 >
@@ -81,7 +81,7 @@ export default function PreviewResult() {
             <div className="py-2">
                 <label><p>Department</p></label>
                 <select
-                className='border-2 rounded-2xl bg-purple-200 p-2'
+                className='border-2 rounded-2xl bg-green-400 p-2 border-green-400'
                 value={resultData.department}
                 onChange={e => setResultData(prev => ({ ...prev, department: e.target.value }))}
                 >
@@ -92,7 +92,7 @@ export default function PreviewResult() {
             <div className="py-2">
                 <label><p>Level</p></label>
                 <select
-                    className='border-2 rounded-2xl bg-purple-200 p-2'
+                    className='border-2 rounded-2xl bg-green-400 p-2 border-green-400'
                     value={resultData.level}
                     onChange={e => setResultData(prev => ({ ...prev, level: e.target.value }))}
                 >
@@ -102,7 +102,7 @@ export default function PreviewResult() {
             </div>
             <button
                 onClick={HandleGetResults}
-                className="px-4 py-2 border-2 w-fit rounded-3xl hover:cursor-pointer border-black"
+                className="px-4 py-2 border-2 w-fit rounded-3xl hover:cursor-pointer bg-green-400 mt-2 border-green-400"
             >
                 <p>Preview Result</p>
             </button>

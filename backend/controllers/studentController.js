@@ -79,7 +79,7 @@ module.exports = {
             const carryOverCourses = results
                 .filter(result => {
                     const totalScore = result.testScore + result.examScore;
-                    return totalScore < 45; 
+                    return totalScore < 40; 
                 })
                 .map(result => result.courseCode);
             student.carryOverCourses = [...new Set([...student.carryOverCourses, ...carryOverCourses])];

@@ -13,7 +13,7 @@ const Toast = ({ text, color }) => {
 
     return (
         <div
-            className={`absolute top-4 text-xs left-1/2 -translate-x-1/2 transition-all duration-500 ease-in-out transform ${
+            className={`absolute left-4 top-4 text-xs transition-all duration-500 ease-in-out transform ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
             } bg-red-300 px-7 py-3 rounded-md shadow-md`}
         >

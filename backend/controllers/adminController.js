@@ -89,9 +89,74 @@ module.exports = {
             res.status(500).json({ message: 'Error deleting lecturers account', error });
         }
     },
+    async deleteAdmin(req, res){
+        try {
+            const { adminId } = req.params;
+            if(!adminId) return res.status(400).json({message: "Invalid admin Id"})
+            const isExisting = await Admin.findById(adminId);
+            if(!isExisting) return res.status(404).json({message : "admin does not exist"});
+            await Admin.findByIdAndDelete(adminId);
+            res.status(200).json({message: "Succesfully deleted admin"})
+        } catch (error) {
+            console.error('Error deleting admins account:', error);
+            res.status(500).json({ message: 'Error deleting admins account', error });
+        }
+    },
+    async editStudent(req, res){
+        const { studentId } = req.params;
+        const data  = req.body;
+        try {
+            const student = await Student.findByIdAndUpdate(studentId, data, { new: true });
+            if (!student) return res.status(404).json({ message: 'Student not found' });
+
+            return res.status(200).json({ message: 'Student information updated successfully', student });
+        } catch (error) {
+            console.error(error.message);
+            return res.status(500).json({ message: `Server error: ${error.message}` });
+        }
+    },
+    async editLecturer(req, res) {
+        const { lecturerId } = req.params;
+        const data  = req.body;
+        try {
+            const alreadyAssignedCourses = await Lecturer.find({ 
+                _id: {$ne: lecturerId},
+                coursesTaking: {$in:  data.coursesTaking }
+            });
+            if (alreadyAssignedCourses && alreadyAssignedCourses.length > 0 ) {
+                return res.status(400).json({ message: 'Some Courses already assigned to another lecturer'});
+            }
+            const existingId = await Lecturer.findOne({
+                _id: {$ne: lecturerId},
+                workId: data.workId
+            });
+            if(existingId) {
+                return res.status(400).json({message: "Lecturer Id already Exists"})
+            }
+            const lecturer = await Lecturer.findByIdAndUpdate(lecturerId, data, { new: true });
+            if (!lecturer) return res.status(404).json({ message: 'Lecturer not found' });
+            return res.status(200).json({ message: 'Lecturer information updated successfully', lecturer });
+        } catch (error) {
+            console.error(error.message);
+            return res.status(500).json({ message: `Server error: ${error.message}` });
+        }
+    },
+    async editAdmin(req, res) {
+        const { adminId } = req.params;
+        const  data  = req.body;
+        try {
+            const updatedAdmin = await Admin.findByIdAndUpdate(adminId, data, { new: true });
+            if (!updatedAdmin) return res.status(404).json({ message: 'admin not found' });
+
+            return res.status(200).json({ message: 'admin information updated successfully', updatedAdmin });
+        } catch (error) {
+            console.error(error.message);
+            return res.status(500).json({ message: `Server error: ${error.message}` });
+        }
+    },
     async getProfile(req, res) {
         try {
-            const admin = await Admin.findById(req.params.id);
+            const admin = await Admin.findById(req.params.adminId);
             if (!admin) {
                 return res.status(404).json({ message: 'Admin not found' });
             }
@@ -144,6 +209,7 @@ module.exports = {
             }
             res.status(200).json({ message: 'Results released successfully', results });
         } catch (error) {
+            console.log(error)
             res.status(500).json({ message: 'Error releasing results', error });
         }
     },
@@ -265,8 +331,8 @@ module.exports = {
         try {
             const students = await Student.find();
             for (const student of students) {
-                const { department, currentLevel, currentSemester } = student;
-                const courses = coursesData[department]?.[currentLevel]?.[currentSemester] || [];
+                const { department, currentLevel, currentSemester, faculty } = student;
+                const courses = coursesData[faculty]?.[department]?.[currentLevel]?.[currentSemester] || [];
                 student.registeredCourses = courses.map(course => course.code);
                 await student.save();
             }

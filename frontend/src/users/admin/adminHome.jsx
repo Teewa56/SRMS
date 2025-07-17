@@ -12,6 +12,7 @@ import {AuthContext} from "../../context/AuthContext"
 import {Book, PlusSquare, Check, GitCompareArrows, User2} from 'lucide-react'
 import ConfirmBox from "../../components/confirmBox"
 import ConfirmUpdate from "../../components/updateConfim"
+import {useNavigate} from 'react-router-dom'
 
 export function AdminHome() {
     const adminId = localStorage.getItem('userId');
@@ -23,6 +24,8 @@ export function AdminHome() {
     const [actionError, setActionError] = useState(null); 
     const [updateError, setUpdateError] = useState(null); 
     const {Logout} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
         const fetchAdminProfile = async () => {
@@ -43,20 +46,22 @@ export function AdminHome() {
 
     async function ReleaseResults(){
         setLoading(true);
+        setIsUploading(true);
         setActionError(null);
         try {
-            const res = await releaseResults();
-            console.log(res);
+            await releaseResults();
         } catch (err) {
             handleApiError(err, setActionError, "Failed to release results");
         } finally {
             setLoading(false);
+            setIsUploading(false);
         }
     }
 
     async function UpdateSemeter(){
         setLoading(true);
         setUpdateError(null);
+        setActionError(null);
         try{
             await updateStudentSemesterLevel();
             await registerCoursesForSemester();
@@ -70,7 +75,10 @@ export function AdminHome() {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-fuchsia-500"></div>
+                <div className="flex flex-col gap-2 items-center">
+                    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500"></div>
+                    {isUploading && <p>Releasing Results...</p>}
+                </div>
             </div>
         );
     }
@@ -84,7 +92,8 @@ export function AdminHome() {
     }
     
     if (!adminProfile) {
-        return null;
+        localStorage.clear();
+        navigate('/')
     }
 
     return(
@@ -114,7 +123,7 @@ export function AdminHome() {
                 <Toast text={updateError} />
             )}
             <div className="max-w-md mx-auto flex flex-col gap-4 p-4">
-                <div className="flex justify-between items-center bg-purple-500 rounded-2xl p-4">
+                <div className="flex justify-between items-center text-gray-200 bg-green-500 rounded-2xl p-4">
                     <div className="flex items-start gap-2 justify-start">
                         <img
                             src={adminProfile?.profilePic || "/images/newUser.svg"}
@@ -139,37 +148,37 @@ export function AdminHome() {
                     <div 
                         onClick={() => setShowConfirm(true)}
                         className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
-                        <Book className="w-12 h-12 text-fuchsia-500" />
+                        <Book className="w-12 h-12 text-green-500" />
                         <h3>Release Results</h3>
                     </div>
                     <div 
                         onClick={() => window.location.href = '/admin/newStudent'}
                         className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
-                        <PlusSquare className="w-12 h-12 text-fuchsia-500" />
+                        <PlusSquare className="w-12 h-12 text-green-500" />
                         <h3>New Student</h3>
                     </div>
                     <div 
                         onClick={() => window.location.href = '/admin/newLecturer'}
                         className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
-                        <PlusSquare className="w-12 h-12 text-fuchsia-500" />
+                        <PlusSquare className="w-12 h-12 text-green-500" />
                         <h3>New Lecturer</h3>
                     </div>
                     <div
                         onClick={() => window.location.href = "/admin/resultPreview"} 
                         className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
-                        <Check className="w-12 h-12 text-fuchsia-500" />
+                        <Check className="w-12 h-12 text-green-500" />
                         <h3>Result Preview</h3>
                     </div>
                     <div 
                         onClick={() => setShowUpdateConfirm(true)}
                         className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
-                        <GitCompareArrows className="w-12 h-12 text-fuchsia-500" />
+                        <GitCompareArrows className="w-12 h-12 text-green-500" />
                         <h3>Update Semester</h3>
                     </div>
                     <div
                         onClick={() => window.location.href =  '/admin/profiles'} 
                         className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
-                        <User2 className="w-12 h-12 text-fuchsia-500" />
+                        <User2 className="w-12 h-12 text-green-500" />
                         <h3>Profiles</h3>
                     </div>
                 </div>

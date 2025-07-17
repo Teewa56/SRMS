@@ -8,7 +8,7 @@ import handleApiError from '../../apiErrorHandler';
 import Toast from '../../components/Toast';
 import { LogOut } from 'lucide-react'
 import { AuthContext } from "../../context/AuthContext"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function StudentHome(){
     const studentId = localStorage.getItem('userId');
@@ -19,7 +19,8 @@ export default function StudentHome(){
     const [gpData, setGpData] = useState({
         gpa: 0,
         cgpa: 0
-    })
+    });
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchStudentProfile = async () => {
@@ -45,35 +46,36 @@ export default function StudentHome(){
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center h-screen bg-purple-400">
-                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-500"></div>
+            <div className="flex justify-center items-center h-screen">
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500"></div>
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="flex justify-center items-center h-screen bg-purple-300">
+            <div className="flex justify-center items-center h-screen bg-green-300">
                 <Toast text={error} />
             </div>
         );
     }
 
     if (!studentProfile) {
-        return null;
+        localStorage.clear();
+        navigate('/')
     }
 
     return (
         <div className="h-screen">
             <div className="max-w-md mx-auto flex flex-col gap-2 p-4">
-                <div className="flex justify-between items-center bg-purple-600 rounded-2xl p-4">
+                <div className="flex justify-between items-center bg-green-400 text-white rounded-2xl p-4">
                     <div className="flex items-start gap-2 justify-start">
                         <img
                             src={studentProfile?.profilePic || "/images/newUser.svg"}
                             alt="Lecturer Profile"
-                            className="rounded-full w-15 h-15 object-cover"
+                            className="rounded-full w-12 h-12"
                         />
-                        <div className="flex flex-col gap-1 font-semibold ">
+                        <div className="flex flex-col text-xs space-y-0.5 font-semibold ">
                             <h3>{studentProfile?.fullName || "Loading..."}</h3>
                             <p>{studentProfile?.schoolEmail || "-"}</p>
                         </div>
@@ -87,19 +89,19 @@ export default function StudentHome(){
                     />
                 </div>
                 <h1 className="font-bold text-2xl">Student Dashboard</h1>
-                <div className='grid grid-cols-2 gap-2 font-bold'>
-                    <div className='bg-purple-600 rounded-2xl p-4 hover:scale-105 transition-all duration-300'>
+                <div className='grid grid-cols-2 gap-2 font-bold text-white'>
+                    <div className='bg-green-400 rounded-2xl p-4 hover:scale-105 transition-all duration-300'>
                         <p>{studentProfile.matricNumber}</p>
                         <p>GPA: {gpData.gpa.toFixed(2)}</p>
                         <p>CGPA: {gpData.cgpa}</p>
                     </div>
-                    <div className='bg-purple-600 rounded-2xl p-4 hover:scale-105 transition-all duration-300'>
+                    <div className='bg-green-400 rounded-2xl p-4 hover:scale-105 transition-all duration-300'>
                         <p>{studentProfile.currentLevel}</p>
                         <p>{studentProfile.currentSemester}</p>
                         <p>{studentProfile.currentSession}</p>
                     </div>
                     <Link 
-                        className='bg-purple-600 hover:scale-105 transition-all duration-300 rounded-2xl p-4 h-20 text-2xl flex items-center justify-between'
+                        className='bg-green-400 hover:scale-105 transition-all duration-300 rounded-2xl p-4 h-20 text-2xl flex items-center justify-between'
                         to='/student/results'>
                             <p>Results</p>
                             <p>→</p>
@@ -117,7 +119,7 @@ export default function StudentHome(){
                 </div>
                 <p className="font-semibold mt-4">Your Carry Over Courses</p>
                 {carryOverCourses.length === 0 ? (
-                    <div className="text-blue-700">No carryOver Courses.</div>
+                    <div className="text-green-500">No carryOver Courses.</div>
                 ) : (
                     <div className="grid grid-cols-2 gap-2">
                         {carryOverCourses.map((course, idx) => (

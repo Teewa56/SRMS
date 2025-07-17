@@ -112,6 +112,59 @@ module.exports = {
             return res.status(500).json({ message: `Server error: ${error.message}` });
         }
     },
+    async editResult(req, res){
+        const { lecturerId } = req.params;
+        const { data } = req.body;
+        try {
+            const lecturer = await Lecturer.findById(lecturerId);
+            if (!lecturer) {
+                return res.status(404).json({ message: 'Lecturer not found' });
+            }            
+            const isAssignedCourse = lecturer.coursesTaking.some(c => 
+                (typeof c === 'string' ? c : c.courseCode) === data.courseCode
+            );
+            if (!isAssignedCourse) {
+                return res.status(403).json({ 
+                    message: 'You are not authorized to edit results for this course' 
+                });
+            }
+            if (data.testScore < 0 || data.testScore > 40 || 
+                data.examScore < 0 || data.examScore > 60) {
+                return res.status(400).json({ 
+                    message: 'Invalid test or exam scores. Test score must be 0-40, exam score 0-60.' 
+                });
+            }
+            const result = await Result.findOne({
+                courseCode: data.courseCode,
+                student: data.studentId
+            });
+            if (!result) {
+                return res.status(404).json({ message: 'Result not found' });
+            }
+            if (result.isReleased) {
+                return res.status(403).json({ 
+                    message: 'Cannot edit result that has already been released' 
+                });
+            }
+            if (result.isGpaCalculated) {
+                return res.status(403).json({ 
+                    message: 'Cannot edit result that has already been used in GPA calculation' 
+                });
+            }
+            result.testScore = data.testScore;
+            result.examScore = data.examScore;
+            result.grade = data.grade,
+            await result.save();
+            
+            return res.status(200).json({
+                message: 'Result updated successfully',
+                result
+            });
+        } catch (error) {
+            console.error('Error in edit CourseResults:', error.message);
+            return res.status(500).json({ message: `Server error: ${error.message}` });
+        }
+    },
     async getCourseResult(req, res) {
         const { lecturerId } = req.params;
         const { courseCode } = req.query;

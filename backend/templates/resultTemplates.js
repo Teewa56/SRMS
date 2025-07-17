@@ -3,7 +3,7 @@ const pdfTemplate = `
 <html>
 <head>
     <style>
-        body { font-family: Arial, sans-serif; }
+        body { font-family: Arial, sans-serif; padding: 20px; }
         .header { text-align: center; margin-bottom: 20px; }
         .university { font-size: 24px; font-weight: bold; }
         .student-info { margin-bottom: 30px; }
@@ -16,7 +16,7 @@ const pdfTemplate = `
 <body>
     <div class="header">
         <div class="university">Federal University of Technology Akure</div>
-        <div class="school">School of <%= faculty %></div>
+        <div class="school"><%= faculty %></div>
         <div class="department">Department of <%= department %></div>
         <h3>OFFICIAL RESULT SLIP</h3>
     </div>
@@ -25,30 +25,31 @@ const pdfTemplate = `
         <thead>
             <tr>
                 <th>Course Code</th>
-                <th>Course Title</th>
                 <th>Score</th>
                 <th>Grade</th>
-                <th>Units</th>
             </tr>
         </thead>
         <tbody>
             <% results.forEach(result => { %>
                 <tr>
                     <td><%= result.courseCode %></td>
-                    <td><%= result.courseTitle || 'N/A' %></td>
-                    <td><%= result.totalScore %></td>
+                    <td><%= Number(result.testScore || 0) + Number(result.examScore || 0) %></td>
                     <td><%= result.grade %></td>
-                    <td><%= result.units %></td>
                 </tr>
             <% }); %>
         </tbody>
     </table>
 
     <div class="summary">
-        <p><strong>Semester GPA:</strong> <%= studentGpa %></p>
+        <p><strong>Semester GPA:</strong> <%= studentGpa.toFixed(2) %></p>
         <p><strong>Cumulative GPA:</strong> <%= studentCgpa %></p>
-        <p><strong>Status:</strong> <%= gpa >= 1.0 ? 'Pass' : 'Probation' %></p>
+        <p><strong>Status:</strong> <%= studentCgpa >= 1.5 ? 'Pass' : 'Probation' %></p>
     </div>
+    <footer style="margin-top: 40px; font-size: 14px; text-align: right;">
+        <p><strong>SIGNED</strong>: Registrar</p>
+    </footer>
 </body>
 </html>
 `;
+
+module.exports = pdfTemplate;

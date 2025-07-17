@@ -54,7 +54,7 @@ export default function Results() {
                         <Link
                             key={`${result.semester}-${index}`}
                             to={`/student/result/${firstCourse.student}?level=${firstCourse.level}&semester=${result.semester}`}
-                            className="block p-4 border-purple-800 rounded-2xl bg-purple-600 hover:bg-purple-500 transition-colors"
+                            className="block p-4 border-green-400 rounded-2xl bg-green-400 text-white hover:bg-green-500 transition-colors"
                         >
                             <h3 className="text-xl font-bold">{firstCourse.level}</h3>
                             <p className="text-lg font-semibold mb-2">{result.semester}</p>

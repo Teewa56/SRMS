@@ -4,6 +4,7 @@ import handleApiError from '../../apiErrorHandler';
 import Toast from '../../components/Toast';
 import { LogOut } from 'lucide-react'
 import { AuthContext } from "../../context/AuthContext"
+import { useNavigate } from 'react-router-dom';
 
 export default function LecturerHome(){
     const lecturerId = localStorage.getItem('userId');
@@ -11,6 +12,7 @@ export default function LecturerHome(){
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchLecturerProfile = async () => {
@@ -35,7 +37,7 @@ export default function LecturerHome(){
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-purple-500"></div>
+                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500"></div>
             </div>
         );
     }
@@ -49,13 +51,14 @@ export default function LecturerHome(){
     }
 
     if (!lecturerProfile) {
-        return null;
+        localStorage.clear();
+        navigate('/')
     }
 
     return (
         <div className="h-screen">
             <div className="max-w-md mx-auto flex flex-col gap-2 p-4">
-                <div className="flex justify-between items-center bg-purple-600 rounded-2xl p-4">
+                <div className="flex justify-between items-center text-gray-200 bg-green-400 rounded-2xl p-4">
                     <div className="flex items-start gap-2 justify-start">
                         <img
                             src={lecturerProfile?.profilePic || "/images/newUser.svg"}
@@ -76,9 +79,9 @@ export default function LecturerHome(){
                     />
                 </div>
                 <h1 className="font-bold text-2xl">Lecturer Dashboard</h1>
-                <p className="font-semibold mt-4">Your Courses</p>
+                <p className="font-semibold mt-2">Your Courses</p>
                 {courses.length === 0 ? (
-                    <div className="text-blue-700">No courses assigned.</div>
+                    <div className="text-green-400">No courses assigned.</div>
                 ) : (
                     <div className="grid grid-cols-2 gap-2">
                         {courses.map((course, idx) => (
@@ -86,7 +89,7 @@ export default function LecturerHome(){
                                 onClick={() => window.location.href = `/lecturer/uploadResult?courseCode=${course}`}
                                 className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                                 <p>{course}</p> 
-                                <button className='px-4 text-xs text-white py-2 rounded-xl bg-gradient-to-r from-purple-300 to-fuchsia-500'>Check Course</button>
+                                <button className='px-4 text-xs font-bold text-white py-2 rounded-xl bg-green-500'>Check Course</button>
                             </div>
                         ))}
                     </div>

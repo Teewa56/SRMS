@@ -3,9 +3,6 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
-body{
-  background: radial-gradient(circle at center, #60a5fa, #c084fc);
-}
 
 @media print {
   body {
