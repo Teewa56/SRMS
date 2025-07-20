@@ -12,7 +12,6 @@ import {AuthContext} from "../../context/AuthContext"
 import {Book, PlusSquare, Check, GitCompareArrows, User2} from 'lucide-react'
 import ConfirmBox from "../../components/confirmBox"
 import ConfirmUpdate from "../../components/updateConfim"
-import {useNavigate} from 'react-router-dom'
 
 export function AdminHome() {
     const adminId = localStorage.getItem('userId');
@@ -24,7 +23,6 @@ export function AdminHome() {
     const [actionError, setActionError] = useState(null); 
     const [updateError, setUpdateError] = useState(null); 
     const {Logout} = useContext(AuthContext);
-    const navigate = useNavigate();
     const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
@@ -89,11 +87,6 @@ export function AdminHome() {
                 <Toast text={error} />
             </div>
         );
-    }
-    
-    if (!adminProfile) {
-        localStorage.clear();
-        navigate('/')
     }
 
     return(

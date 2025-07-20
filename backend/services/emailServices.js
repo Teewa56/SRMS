@@ -4,6 +4,7 @@ const ejs = require('ejs')
 const path = require('path')
 require('dotenv').config()
 const template = require('../templates/resultTemplates')
+const fs = require('fs');
 
 const transporter = nodeMailer.createTransport({
     service: 'gmail',
@@ -29,6 +30,8 @@ async function generatePdf(student, results) {
         matricNumber: student.matricNumber,
         studentName: student.fullName,
         semester: student.currentSemester,
+        level: student.currentLevel,
+        carryOver: student.carryOverCourses,
         academicYear: student.currentSession,
         faculty: student.faculty,
         department: student.department,
@@ -38,11 +41,13 @@ async function generatePdf(student, results) {
     };
 
     try {
-        const html = await ejs.render(template, studentData);
-
+        const logoPath = path.join(__dirname, '../templates/futalogo.jpg');
+        const logoData = fs.readFileSync(logoPath);
+        const base64Logo = `data:image/jpeg;base64,${logoData.toString('base64')}`;
+        const templateWithLogo = template.replace(/\/futalogo\.jpg/g, base64Logo);
+        const html = await ejs.render(templateWithLogo, studentData);
         const pdfDir = path.join(__dirname, 'pdfs');
         const pdfPath = path.join(pdfDir, `${student.matricNumber}_${student.currentSemester}_${student.currentLevel}_${Date.now()}.pdf`);
-
         return await new Promise((resolve, reject) => {
             pdf.create(html, pdfOptions).toFile(pdfPath, (err, res) => {
                 if (err) {

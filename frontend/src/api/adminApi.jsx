@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const liveUrl = import.meta.env.VITE_DEPLOYED_BACKEND_URL
-//const localUrl = import.meta.env.VITE_BACKEND_LOCAL_URL;
+//const liveUrl = import.meta.env.VITE_DEPLOYED_BACKEND_URL
+const localUrl = import.meta.env.VITE_BACKEND_LOCAL_URL;
 
-const baseUrl = `${liveUrl}/admin`;
+const baseUrl = `${localUrl}/admin`;
 
 const adminApi = axios.create({
     baseURL: baseUrl,

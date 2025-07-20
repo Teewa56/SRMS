@@ -40,7 +40,7 @@ export default function SignIn() {
             const payload = {...userInfo};
             if (userType === 'admin') await LogInadmin(payload);
             if (userType === 'lecturer') await LogInlecturer(payload);
-            if (userType === 'student') {await LogInstudent(payload);}
+            if (userType === 'student') await LogInstudent(payload);
             setLoading(false);
         } catch (error) {
             console.error("Error during sign-in:", error);

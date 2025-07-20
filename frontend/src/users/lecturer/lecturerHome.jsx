@@ -4,7 +4,6 @@ import handleApiError from '../../apiErrorHandler';
 import Toast from '../../components/Toast';
 import { LogOut } from 'lucide-react'
 import { AuthContext } from "../../context/AuthContext"
-import { useNavigate } from 'react-router-dom';
 
 export default function LecturerHome(){
     const lecturerId = localStorage.getItem('userId');
@@ -12,7 +11,6 @@ export default function LecturerHome(){
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchLecturerProfile = async () => {
@@ -48,11 +46,6 @@ export default function LecturerHome(){
                 <Toast text={error} />
             </div>
         );
-    }
-
-    if (!lecturerProfile) {
-        localStorage.clear();
-        navigate('/')
     }
 
     return (

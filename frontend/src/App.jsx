@@ -28,7 +28,6 @@ import './App.css';
 const App = () => {
   const { isAuth } = useContext(AuthContext);
   const userType = localStorage.getItem('userType');
-  const userId = localStorage.getItem('userId');
   function StudentRoutes({ children }) {
     if (userType !== 'student') {
       return <Navigate to={`/${userType}`} replace />;

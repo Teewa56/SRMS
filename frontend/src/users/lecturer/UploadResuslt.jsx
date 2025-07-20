@@ -216,9 +216,9 @@ export default function UploadResult() {
                 <>
                     <div className="mb-4 bg-green-100 rounded-xl p-4 overflow-x-auto print-section">
                         <h3 className="font-bold text-green-800 mb-2">Uploaded Results for {courseCode}</h3>
-                        <p>Level: {results[0].student.currentLevel}</p>
-                        <p>Session: {results[0].student.currentSession}</p>
-                        <p>Semester: {results[0].student.currentSemester}</p>
+                        <p>Level: {results[0].student?.currentLevel}</p>
+                        <p>Session: {results[0].student?.currentSession}</p>
+                        <p>Semester: {results[0].student?.currentSemester}</p>
                         <table className="table-auto w-full border-collapse border border-green-400 bg-white">
                             <thead>
                                 <tr className="bg-green-200">

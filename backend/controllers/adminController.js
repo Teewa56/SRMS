@@ -202,6 +202,13 @@ module.exports = {
                     student.semesterGPA = semesterGPA;
                     student.cgpa = newCGPA;
                     student.semestersCompleted = newSemstersCompleted;
+                    const carryOverCourses = studentResults
+                        .filter(result => {
+                            const totalScore = result.testScore + result.examScore;
+                            return totalScore < 40;
+                        })
+                        .map(result => result.courseCode);
+                    student.carryOverCourses = [...new Set([...student.carryOverCourses, ...carryOverCourses])];
                     await student.save();
                 }
                 const pdfPath = await generatePdf(student, studentResults);

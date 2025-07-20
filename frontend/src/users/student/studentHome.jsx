@@ -8,7 +8,7 @@ import handleApiError from '../../apiErrorHandler';
 import Toast from '../../components/Toast';
 import { LogOut } from 'lucide-react'
 import { AuthContext } from "../../context/AuthContext"
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function StudentHome(){
     const studentId = localStorage.getItem('userId');
@@ -20,7 +20,6 @@ export default function StudentHome(){
         gpa: 0,
         cgpa: 0
     });
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchStudentProfile = async () => {
@@ -60,11 +59,6 @@ export default function StudentHome(){
         );
     }
 
-    if (!studentProfile) {
-        localStorage.clear();
-        navigate('/')
-    }
-
     return (
         <div className="h-screen">
             <div className="max-w-md mx-auto flex flex-col gap-2 p-4">
@@ -91,14 +85,14 @@ export default function StudentHome(){
                 <h1 className="font-bold text-2xl">Student Dashboard</h1>
                 <div className='grid grid-cols-2 gap-2 font-bold text-white'>
                     <div className='bg-green-400 rounded-2xl p-4 hover:scale-105 transition-all duration-300'>
-                        <p>{studentProfile.matricNumber}</p>
+                        <p>{studentProfile?.matricNumber}</p>
                         <p>GPA: {gpData.gpa.toFixed(2)}</p>
                         <p>CGPA: {gpData.cgpa}</p>
                     </div>
                     <div className='bg-green-400 rounded-2xl p-4 hover:scale-105 transition-all duration-300'>
-                        <p>{studentProfile.currentLevel}</p>
-                        <p>{studentProfile.currentSemester}</p>
-                        <p>{studentProfile.currentSession}</p>
+                        <p>{studentProfile?.currentLevel}</p>
+                        <p>{studentProfile?.currentSemester}</p>
+                        <p>{studentProfile?.currentSession}</p>
                     </div>
                     <Link 
                         className='bg-green-400 hover:scale-105 transition-all duration-300 rounded-2xl p-4 h-20 text-2xl flex items-center justify-between'
@@ -110,7 +104,7 @@ export default function StudentHome(){
                 
                 <p className="font-semibold mt-4">Your Registered Courses</p>
                 <div className="grid grid-cols-2 gap-2">
-                    {studentProfile.registeredCourses.map((course, idx) => (
+                    {studentProfile?.registeredCourses.map((course, idx) => (
                         <div key={idx} 
                             className="cursor-pointer flex flex-col gap-2 items-center bg-gray-200 rounded-2xl p-4">
                             {course}
