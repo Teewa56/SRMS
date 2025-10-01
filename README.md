@@ -2,6 +2,9 @@
 
 A comprehensive web-based result management system for educational institutions, built with the MERN stack (MongoDB, Express, React, Node.js).
 
+### NOTE: 
+Check the frontend/src/api/adminApi, lecturerApi, studentApi and follow the instruction in the comment
+
 ## 🚀 Features
 
 ### For Students

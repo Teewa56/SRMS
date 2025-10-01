@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const liveUrl = import.meta.env.VITE_DEPLOYED_BACKEND_URL
 //const localUrl = import.meta.env.VITE_BACKEND_LOCAL_URL;
+//for local testing, uncomment the line below and comment the liveUrl line
 
 const baseUrl = `${liveUrl}/lecturer`;
 
